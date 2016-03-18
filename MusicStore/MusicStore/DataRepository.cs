@@ -10,60 +10,64 @@ using System.Threading.Tasks;
 
 namespace MusicStore
 {
-    class DataRepository
+    public static class DataRepository
     {
         #region Data Collections
-        List<Client> Clients;
-        Dictionary<string, Product> Products;
-        ObservableCollection<Transaction> Transactions;
+        static List<Client> Clients;
+        static Dictionary<string, Product> Products;
+        static ObservableCollection<Transaction> Transactions;
         #endregion
+
+        static DataRepository()
+        {
+            Clients = new List<Client>();
+        }
 
         #region Data Creation Methods
-        void CreateProduct()
-        {
-
-        }
-
-        void CreateClient()
-        {
-
-        }
-
-        void CreateTransaction()
-        {
-
-        }
-
-        #endregion
-
-        #region Data Read Methods
-
-        void ReadAllProducts()
+        public static void CreateProduct()
         {
             
         }
 
-        void ReadAllClients()
+        public static void CreateClient(string Name, string Surname, string Street, string City, int BirthYear)
+        {
+            Clients.Add(new Client(Name, Surname, Street, City, BirthYear));
+        }
+
+        public static void CreateTransaction()
+        {
+
+        }
+        #endregion
+
+        #region Data Read Methods
+
+        static void ReadAllProducts()
+        {
+            
+        }
+
+        static void ReadAllClients()
         {
 
         }
 
-        void ReadAlltransactions()
+        static void ReadAlltransactions()
         {
 
         }
 
-        void GetSpecificProduct()
+        static void GetSpecificProduct()
         {
 
         }
 
-        void GetSpecificClient()
+        static void GetSpecificClient()
         {
 
         }
 
-        void GetSpecificTransaction()
+        static void GetSpecificTransaction()
         {
 
         }

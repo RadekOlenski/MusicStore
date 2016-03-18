@@ -8,13 +8,26 @@ using System.Threading.Tasks;
 
 namespace MusicStore
 {
-    class Client
+    public class Client
     {
+
+        #region Constructor
+        public Client(string name, string surname, string street, string city, int birthYear)
+        {
+            Name = name;
+            Surname = surname;
+            Street = street;
+            City = city;
+            BirthYear = birthYear;
+        }
+        #endregion
+
         #region Client Info Variables
-
-        public string Name, Surname, Street, City;
-        public int BirthYear;
-
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public int BirthYear { get; set; }
         #endregion
     }
 }
