@@ -13,17 +13,17 @@ namespace MusicStore
         #region Constructor
         public Product(string Name, double Price)
         {
-            _name = Name;
-            _price = Price;
+            this.Name = Name;
+            this.Price = Price;
         }
         #endregion
 
-        #region Private Variables
+        #region Variables
         private static int _productID = 0;
 
-        private string _name;
+        public string Name { get; set; }
 
-        private double _price;
+        public double Price { get; set; }
         #endregion
 
         #region Public Methods

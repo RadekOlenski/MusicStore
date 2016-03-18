@@ -14,20 +14,21 @@ namespace MusicStore
         #region Constructor
         public Client(string Name, string Surname, string Street, string City, int BirthYear)
         {
-            _name = Name;
-            _surname = Surname;
-            _street = Street;
-            _city = City;
-            _birthYear = BirthYear;
+            this.Name = Name;
+            this.Surname = Surname;
+            this.Street = Street;
+            this.City = City;
+            this.BirthYear = BirthYear;
         }
         #endregion
 
         #region Client Info Variables
-        private string _name;
-        private string _surname;
-        private string _street;
-        private string _city;
-        private int _birthYear;
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public int BirthYear { get; set; }
         #endregion
+
     }
 }

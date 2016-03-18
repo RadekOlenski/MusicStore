@@ -5,6 +5,7 @@ namespace MusicStore
 {
     namespace DataRepositoryTests
     {
+        #region Creation Tests
         [TestClass]
         public class DataCreationTests
         {
@@ -23,5 +24,25 @@ namespace MusicStore
                 DataRepository.CreateProduct(ProductType.LIVEALBUM, "Live at Rome", 77.21);
             }
         }
+        #endregion
+
+        #region Read Tests
+        [TestClass]
+        public class DataReadTests
+        {
+            [TestMethod]
+            public void ReadAllProducts()
+            {
+                DataRepository.ReadAllProducts();
+            }
+
+            [TestMethod]
+            public void ReadAllClients()
+            {
+                DataRepository.ReadAllClients();
+            }
+
+        }
+        #endregion
     }
 }

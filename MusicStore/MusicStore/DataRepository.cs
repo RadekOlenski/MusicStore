@@ -18,17 +18,19 @@ namespace MusicStore
         static ObservableCollection<Transaction> Transactions;
         #endregion
 
+        #region Constructor
         static DataRepository()
         {
             Clients = new List<Client>();
             Products = new Dictionary<int, Product>();
             Transactions = new ObservableCollection<Transaction>();
         }
+        #endregion
 
         #region Data Creation Methods
         public static void CreateProduct(int Type, string Name, double Price)
         {
-            switch(Type)
+            switch (Type)
             {
                 case ProductType.GUITAR:
                     Products.Add(Product.GenerateProductID(), new Guitar(Name, Price));
@@ -58,14 +60,21 @@ namespace MusicStore
 
         #region Data Read Methods
 
-        static void ReadAllProducts()
+        public static void ReadAllProducts()
         {
-            
+            foreach (var product in Products)
+            {
+                Console.WriteLine("Product Name: {0}, Price: {1}", product.Key, product.Value);
+            }
         }
 
-        static void ReadAllClients()
+        public static void ReadAllClients()
         {
-
+            foreach (var client in Clients)
+            {
+                Console.WriteLine("Client Name: {0} {1}, Street: {2}, City: {3}, Year of birth: {4}",
+                    client.Name, client.Surname, client.Street, client.City, client.BirthYear);
+            }
         }
 
         static void ReadAlltransactions()
