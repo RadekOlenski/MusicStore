@@ -10,7 +10,6 @@ namespace MusicStore
 {
     public class Client
     {
-
         #region Constructor
         public Client(string Name, string Surname, string Street, string City, int BirthYear)
         {
@@ -29,6 +28,5 @@ namespace MusicStore
         public string City { get; set; }
         public int BirthYear { get; set; }
         #endregion
-
     }
 }

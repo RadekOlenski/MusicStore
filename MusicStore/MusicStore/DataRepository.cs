@@ -12,12 +12,6 @@ namespace MusicStore
 {
     public static class DataRepository
     {
-        #region Data Collections
-        static List<Client> Clients;
-        static Dictionary<int, Product> Products;
-        static ObservableCollection<Transaction> Transactions;
-        #endregion
-
         #region Constructor
         static DataRepository()
         {
@@ -25,6 +19,12 @@ namespace MusicStore
             Products = new Dictionary<int, Product>();
             Transactions = new ObservableCollection<Transaction>();
         }
+        #endregion
+
+        #region Data Collections
+        static List<Client> Clients;
+        static Dictionary<int, Product> Products;
+        static ObservableCollection<Transaction> Transactions;
         #endregion
 
         #region Data Creation Methods
@@ -59,12 +59,12 @@ namespace MusicStore
         #endregion
 
         #region Data Read Methods
-
         public static void ReadAllProducts()
         {
-            foreach (var product in Products)
+            for (int i = 1; i <= Products.Count; i++)
             {
-                Console.WriteLine("Product Name: {0}, Price: {1}", product.Key, product.Value);
+                Console.WriteLine("Product Type: {2}, Name: {0}, Price: {1}", 
+                    Products[i].Name, Products[i].Price, Products.ElementAt(i - 1).Value);
             }
         }
 
