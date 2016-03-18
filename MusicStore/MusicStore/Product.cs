@@ -10,5 +10,7 @@ namespace MusicStore
 {
     class Product
     {
+        public string Product_ID; 
+
     }
 }

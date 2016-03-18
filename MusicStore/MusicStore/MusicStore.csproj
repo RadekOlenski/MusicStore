@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clients.cs" />
+    <Compile Include="DataRepository.cs" />
     <Compile Include="Guitar.cs" />
     <Compile Include="Instrument.cs" />
     <Compile Include="Keyboard.cs" />
