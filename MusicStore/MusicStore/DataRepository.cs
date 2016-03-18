@@ -14,19 +14,35 @@ namespace MusicStore
     {
         #region Data Collections
         static List<Client> Clients;
-        static Dictionary<string, Product> Products;
+        static Dictionary<int, Product> Products;
         static ObservableCollection<Transaction> Transactions;
         #endregion
 
         static DataRepository()
         {
             Clients = new List<Client>();
+            Products = new Dictionary<int, Product>();
+            Transactions = new ObservableCollection<Transaction>();
         }
 
         #region Data Creation Methods
-        public static void CreateProduct()
+        public static void CreateProduct(int Type, string Name, double Price)
         {
-            
+            switch(Type)
+            {
+                case ProductType.GUITAR:
+                    Products.Add(Product.GenerateProductID(), new Guitar(Name, Price));
+                    break;
+                case ProductType.KEYBOARD:
+                    Products.Add(Product.GenerateProductID(), new Keyboard(Name, Price));
+                    break;
+                case ProductType.LONGPLAY:
+                    Products.Add(Product.GenerateProductID(), new LongPlay(Name, Price));
+                    break;
+                case ProductType.LIVEALBUM:
+                    Products.Add(Product.GenerateProductID(), new LiveAlbum(Name, Price));
+                    break;
+            }
         }
 
         public static void CreateClient(string Name, string Surname, string Street, string City, int BirthYear)

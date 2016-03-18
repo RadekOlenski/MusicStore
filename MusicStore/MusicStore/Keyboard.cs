@@ -10,5 +10,9 @@ namespace MusicStore
 {
     class Keyboard : Instrument
     {
+        public Keyboard(string Name, double Price) : base(Name, Price)
+        {
+
+        }
     }
 }

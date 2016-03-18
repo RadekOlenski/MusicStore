@@ -10,5 +10,10 @@ namespace MusicStore
 {
     class Instrument : Product
     {
+        public Instrument(string Name, double Price) : base(Name, Price)
+        {
+
+        }
+
     }
 }
