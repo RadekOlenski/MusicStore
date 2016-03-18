@@ -13,12 +13,60 @@ namespace MusicStore
     class DataRepository
     {
         #region Data Collections
-        List<Clients> Clients;
+        List<Client> Clients;
         Dictionary<string, Product> Products;
-        ObservableCollection<Transactions> Transactions;
+        ObservableCollection<Transaction> Transactions;
         #endregion
 
-        #region Data Methods
+        #region Data Creation Methods
+        void CreateProduct()
+        {
+
+        }
+
+        void CreateClient()
+        {
+
+        }
+
+        void CreateTransaction()
+        {
+
+        }
+
+        #endregion
+
+        #region Data Read Methods
+
+        void ReadAllProducts()
+        {
+            
+        }
+
+        void ReadAllClients()
+        {
+
+        }
+
+        void ReadAlltransactions()
+        {
+
+        }
+
+        void GetSpecificProduct()
+        {
+
+        }
+
+        void GetSpecificClient()
+        {
+
+        }
+
+        void GetSpecificTransaction()
+        {
+
+        }
 
         #endregion
 

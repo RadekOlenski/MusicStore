@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicStore
 {
-    class Transactions
+    class Client
     {
     }
 }
