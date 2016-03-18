@@ -10,5 +10,11 @@ namespace MusicStore
 {
     class Client
     {
+        #region Client Info Variables
+
+        public string Name, Surname, Street, City;
+        public int BirthYear;
+
+        #endregion
     }
 }
