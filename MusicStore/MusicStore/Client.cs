@@ -13,6 +13,7 @@ namespace MusicStore
         #region Constructor
         public Client(string Name, string Surname, string Street, string City, int BirthYear)
         {
+            GenerateClientID();
             this.Name = Name;
             this.Surname = Surname;
             this.Street = Street;
@@ -21,12 +22,24 @@ namespace MusicStore
         }
         #endregion
 
-        #region Client Info Variables
+        #region Client Info Properties
+        private int _clientID = 0;
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Street { get; set; }
         public string City { get; set; }
         public int BirthYear { get; set; }
+        #endregion
+
+        #region Methods
+        private void GenerateClientID()
+        {
+            _clientID++;
+        }
+        public int GetClientID()
+        {
+            return _clientID;
+        }
         #endregion
     }
 }

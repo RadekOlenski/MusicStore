@@ -56,9 +56,9 @@ namespace MusicStore
             Clients.Add(new Client(Name, Surname, Street, City, BirthYear));
         }
 
-        public static void CreateTransaction()
+        public static void CreateTransaction(int ClientID, int ProductID, string Date)
         {
-            //TODO
+            Transactions.Add(new Transaction(ClientID, ProductID, Date));
         }
         #endregion
 

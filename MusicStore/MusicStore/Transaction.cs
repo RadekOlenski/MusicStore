@@ -10,5 +10,30 @@ namespace MusicStore
 {
     class Transaction
     {
+        #region Constructor
+        public Transaction(int ClientID, int ProductID, string Date)
+        {
+            GenerateTransactionID();
+            this.ClientID = ClientID;
+            this.ProductID = ProductID;
+            this.Date = Date;
+        }
+        #endregion
+
+        #region Properties
+        private int _transactionID = 0;
+        public int ClientID { get; set; }
+        public int ProductID { get; set; }
+        public string Date { get; set; }
+        #endregion
+
+        #region Methods
+        void GenerateTransactionID()
+        {
+            _transactionID++;
+        }
+        #endregion
+
+
     }
 }
