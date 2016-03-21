@@ -175,5 +175,20 @@ namespace MusicStore
         }
 
         #endregion
+
+        #region Data Filters
+
+        public static void FilterByClientAge (int RequiredAge)
+        {
+            foreach (Client client in Clients)
+            {
+                if (DateTime.Now.Year - client.BirthYear >= RequiredAge)
+                {
+                    GetSpecificClient(client.GetClientID());
+                }
+            }
+        }
+
+        #endregion
     }
 }
