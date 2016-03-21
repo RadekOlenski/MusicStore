@@ -53,6 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DataCreationTests.cs" />
+    <Compile Include="DataDeleteTests.cs" />
     <Compile Include="DataReadTests.cs" />
     <Compile Include="DataUpdateTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

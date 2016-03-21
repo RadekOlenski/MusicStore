@@ -66,10 +66,10 @@ namespace MusicStore
         public static void ReadAllProducts()
         {
             //This method prints out every product from collection, with all of its properties and Object Type
-            for (int i = 1; i <= Products.Count; i++)
+            for (int i = 0; i < Products.Count; i++)
             {
                 Console.WriteLine("Product Type: {0}, Name: {1}, Price: {2}",
-                    Products.ElementAt(i - 1).Value, Products[i].Name, Products[i].Price);
+                    Products.ElementAt(i).Value, Products[i].Name, Products[i].Price);
             }
         }
 
@@ -96,7 +96,7 @@ namespace MusicStore
         public static void GetSpecificProduct(int ID)
         {
             Console.WriteLine("Product Type: {0}, Name: {1}, Price: {2}",
-                     Products.ElementAt(ID - 1).Value, Products[ID].Name, Products[ID].Price);
+                     Products.ElementAt(ID).Value, Products[ID].Name, Products[ID].Price);
         }
 
         public static void GetSpecificClient(int ID)
@@ -139,6 +139,25 @@ namespace MusicStore
         public static void UpdateClientBirthYear(int ClientID, int NewValue)
         {
             Clients[ClientID].BirthYear = NewValue;
+        }
+
+        #endregion
+
+        #region Object Delete Methods
+
+        public static void DeleteClient(int ID)
+        {
+           Clients.Remove(Clients.ElementAt(ID));
+        }
+
+        public static void DeleteProduct(int ID)
+        {
+            Products.Remove(ID);
+        }
+
+        public static void DeleteTransaction(int ID)
+        {
+            Transactions.RemoveAt(ID);
         }
 
         #endregion
