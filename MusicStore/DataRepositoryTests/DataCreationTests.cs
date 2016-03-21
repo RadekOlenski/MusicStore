@@ -14,6 +14,8 @@ namespace DataRepositoryTests
         public void CreateClient()
         {
             DataRepository.CreateClient("Adam", "Nowak", "Drzewna", "Lodz", 1990);
+            DataRepository.CreateClient("Radek", "Olenski", "Pierwsza", "Lodz", 1994);
+            DataRepository.CreateClient("Marcin", "Jozwik", "Druga", "Lodz", 1995);
         }
 
         [TestMethod]
@@ -29,7 +31,7 @@ namespace DataRepositoryTests
         [TestMethod]
         public void CreateTransaction()
         {
-            DataRepository.CreateTransaction(734, 21, "21.04.2000");
+            DataRepository.CreateTransaction(1, 2, "21.04.2000");
         }
     }
     #endregion

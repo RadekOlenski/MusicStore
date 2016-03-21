@@ -83,9 +83,14 @@ namespace MusicStore
             }
         }
 
-        static void ReadAlltransactions()
+        public static void ReadAllTransactions()
         {
-            //TODO
+            foreach (var transaction in Transactions)
+            {
+                Console.WriteLine("Client Name: {0} {1}, Product Name: {2}, Price: {3}, Date: {4}",
+                    Clients[transaction.ClientID].Name, Clients[transaction.ClientID].Surname,
+                    Products[transaction.ProductID].Name, Products[transaction.ProductID].Price, transaction.Date);
+            }
         }
 
         static void GetSpecificProduct()
@@ -93,9 +98,10 @@ namespace MusicStore
             //TODO
         }
 
-        static void GetSpecificClient()
+        public static void GetSpecificClient(int ID)
         {
-            //TODO
+            Console.WriteLine("Client Name: {0} {1}, Street: {2}, City: {3}, Year of birth: {4}",
+                    Clients[ID].Name, Clients[ID].Surname, Clients[ID].Street, Clients[ID].City, Clients[ID].BirthYear);
         }
 
         static void GetSpecificTransaction()

@@ -23,6 +23,19 @@ namespace DataRepositoryTests
         {
             DataRepository.ReadAllClients();
         }
+
+        [TestMethod]
+        public void ReadAllTransactions()
+        {
+            DataRepository.ReadAllTransactions();
+        }
+
+        [TestMethod]
+        public void GetSpecificClient()
+        {
+            DataRepository.GetSpecificClient(2);   
+        }
+
     }
     #endregion
 }
