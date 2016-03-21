@@ -55,6 +55,7 @@
     <Compile Include="DataCreationTests.cs" />
     <Compile Include="DataReadTests.cs" />
     <Compile Include="DataUpdateTests.cs" />
+    <Compile Include="FilterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
