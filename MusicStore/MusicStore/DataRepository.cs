@@ -105,5 +105,33 @@ namespace MusicStore
 
         #endregion
 
+        #region Data Update Client Collection
+
+        public static void UpdateClientName(int ClientID, string NewValue)
+        {
+            Clients[ClientID].Name = NewValue;
+        }
+
+        public static void UpdateClientSurname(int ClientID, string NewValue)
+        {
+            Clients[ClientID].Surname = NewValue;
+        }
+
+        public static void UpdateClientStreet(int ClientID, string NewValue)
+        {
+            Clients[ClientID].Street = NewValue;
+        }
+
+        public static void UpdateClientCity(int ClientID, string NewValue)
+        {
+            Clients[ClientID].City = NewValue;
+        }
+
+        public static void UpdateClientBirthYear(int ClientID, int NewValue)
+        {
+            Clients[ClientID].BirthYear = NewValue;
+        }
+
+        #endregion
     }
 }
