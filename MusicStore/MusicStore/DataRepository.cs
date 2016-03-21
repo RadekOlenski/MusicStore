@@ -143,6 +143,20 @@ namespace MusicStore
 
         #endregion
 
+        #region Data Update Product Collection
+
+        public static void UpdateProductName (int ProductID, string NewValue)
+        {
+            Products[ProductID].Name = NewValue;
+        }
+
+        public static void UpdateProductPrice(int ProductID, double NewValue)
+        {
+            Products[ProductID].Price = NewValue;
+        }
+
+        #endregion
+
         #region Object Delete Methods
 
         public static void DeleteClient(int ID)

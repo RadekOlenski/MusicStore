@@ -49,5 +49,21 @@ namespace DataRepositoryTests
             DataRepository.UpdateClientBirthYear(0, 2015);
             DataRepository.GetSpecificClient(0);
         }
+
+        [TestMethod]
+        public void UpdateProductName()
+        {
+            DataRepository.GetSpecificProduct(0);
+            DataRepository.UpdateProductName(0, "Ibanez 23475H");
+            DataRepository.GetSpecificProduct(0);
+        }
+
+        [TestMethod]
+        public void UpdateProductPrice()
+        {
+            DataRepository.GetSpecificProduct(0);
+            DataRepository.UpdateProductPrice(0, 349.90);
+            DataRepository.GetSpecificProduct(0);
+        }
     }
 }
