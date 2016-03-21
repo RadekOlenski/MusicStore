@@ -65,18 +65,18 @@ namespace MusicStore
         #region Data Read Methods
         public static void ReadAllProducts()
         {
-            //This method prints out every product from collection, with all of its properties
+            //This method prints out every product from collection, with all of its properties and Object Type
             for (int i = 1; i <= Products.Count; i++)
             {
-                Console.WriteLine("Product Type: {2}, Name: {0}, Price: {1}",
-                    Products[i].Name, Products[i].Price, Products.ElementAt(i - 1).Value);
+                Console.WriteLine("Product Type: {0}, Name: {1}, Price: {2}",
+                    Products.ElementAt(i - 1).Value, Products[i].Name, Products[i].Price);
             }
         }
 
         public static void ReadAllClients()
         {
             //This method prints out every client that exists in collecion, with all of its properties
-            foreach (var client in Clients)
+            foreach (Client client in Clients)
             {
                 Console.WriteLine("Client Name: {0} {1}, Street: {2}, City: {3}, Year of birth: {4}",
                     client.Name, client.Surname, client.Street, client.City, client.BirthYear);
@@ -85,7 +85,7 @@ namespace MusicStore
 
         public static void ReadAllTransactions()
         {
-            foreach (var transaction in Transactions)
+            foreach (Transaction transaction in Transactions)
             {
                 Console.WriteLine("Client Name: {0} {1}, Product Name: {2}, Price: {3}, Date: {4}",
                     Clients[transaction.ClientID].Name, Clients[transaction.ClientID].Surname,
@@ -93,9 +93,10 @@ namespace MusicStore
             }
         }
 
-        static void GetSpecificProduct()
+        public static void GetSpecificProduct(int ID)
         {
-            //TODO
+            Console.WriteLine("Product Type: {0}, Name: {1}, Price: {2}",
+                     Products.ElementAt(ID - 1).Value, Products[ID].Name, Products[ID].Price);
         }
 
         public static void GetSpecificClient(int ID)
@@ -104,9 +105,11 @@ namespace MusicStore
                     Clients[ID].Name, Clients[ID].Surname, Clients[ID].Street, Clients[ID].City, Clients[ID].BirthYear);
         }
 
-        static void GetSpecificTransaction()
+        public static void GetSpecificTransaction(int ID)
         {
-            //TODO
+            Console.WriteLine("Client Name: {0} {1}, Product Name: {2}, Price: {3}, Date: {4}",
+                   Clients[Transactions[ID].ClientID].Name, Clients[Transactions[ID].ClientID].Surname,
+                   Products[Transactions[ID].ProductID].Name, Products[Transactions[ID].ProductID].Price, Transactions[ID].Date);
         }
 
         #endregion

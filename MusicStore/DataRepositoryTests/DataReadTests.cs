@@ -36,6 +36,17 @@ namespace DataRepositoryTests
             DataRepository.GetSpecificClient(2);   
         }
 
+        [TestMethod]
+        public void GetSpecificProduct()
+        {
+            DataRepository.GetSpecificProduct(3);
+        }
+
+        [TestMethod]
+        public void GetSpecificTransaction()
+        {
+            DataRepository.GetSpecificTransaction(0);
+        }
     }
     #endregion
 }
