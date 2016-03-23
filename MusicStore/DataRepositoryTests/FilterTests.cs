@@ -12,5 +12,11 @@ namespace DataRepositoryTests
         {
             DataRepository.FilterByClientAge(18);
         }
+
+        [TestMethod]
+        public void FilterByGreaterProductPrice()
+        {
+            DataRepository.FilterByGreaterProductPrice(200.99);
+        }
     }
 }

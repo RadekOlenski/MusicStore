@@ -20,6 +20,7 @@ namespace MusicStore
             Products = new Dictionary<int, Product>();
             Transactions = new ObservableCollection<Transaction>();
         }
+
         #endregion
 
         #region Data Collections
@@ -185,6 +186,17 @@ namespace MusicStore
                 if (DateTime.Now.Year - client.BirthYear >= RequiredAge)
                 {
                     GetSpecificClient(client.GetClientID());
+                }
+            }
+        }
+
+        public static void FilterByGreaterProductPrice(double RequiredPrice)
+        {
+            foreach (KeyValuePair<int, Product> product in Products)
+            {
+                if (product.Value.Price > RequiredPrice)
+                {
+                    GetSpecificProduct(product.Value.GetProductID());
                 }
             }
         }

@@ -32,6 +32,12 @@ namespace MusicStore
                 _productID++;
                 return _productID - 1;
         }
+
+        public int GetProductID()
+        {
+            return _productID;
+        }
+
         #endregion
 
     }
