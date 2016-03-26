@@ -36,16 +36,16 @@ namespace MusicStore
             //Function adds new product to the Products Dictionary, according to the Type of product passed from database
             switch (Type)
             {
-                case ProductType.GUITAR:
+                case ProductType.Guitar:
                     Products.Add(Product.GenerateProductID(), new Guitar(Name, Price));
                     break;
-                case ProductType.KEYBOARD:
+                case ProductType.Keyboard:
                     Products.Add(Product.GenerateProductID(), new Keyboard(Name, Price));
                     break;
-                case ProductType.LONGPLAY:
+                case ProductType.Longplay:
                     Products.Add(Product.GenerateProductID(), new LongPlay(Name, Price));
                     break;
-                case ProductType.LIVEALBUM:
+                case ProductType.LiveAlbum:
                     Products.Add(Product.GenerateProductID(), new LiveAlbum(Name, Price));
                     break;
             }
