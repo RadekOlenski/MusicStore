@@ -19,7 +19,16 @@ namespace MusicStore
             Clients = new List<Client>();
             Products = new Dictionary<int, Product>();
             Transactions = new ObservableCollection<Transaction>();
+            //ClientsIDCounter = 0;
+            //ProductsIDCounter = 0;
         }
+
+        #endregion
+
+        #region Properties
+
+        //public static int ClientsIDCounter { get; set; }
+        //public static int ProductsIDCounter { get; set; }
 
         #endregion
 
@@ -31,7 +40,7 @@ namespace MusicStore
         #endregion
 
         #region Data Creation Methods
-        public static void CreateProduct(int Type, string Name, double Price)
+        public static void CreateProduct(ProductType Type, string Name, double Price)
         {
             //Function adds new product to the Products Dictionary, according to the Type of product passed from database
             switch (Type)
@@ -196,7 +205,7 @@ namespace MusicStore
             {
                 if (product.Value.Price > RequiredPrice)
                 {
-                    GetSpecificProduct(product.Value.GetProductID());
+                    GetSpecificProduct(product.Key);
                 }
             }
         }
