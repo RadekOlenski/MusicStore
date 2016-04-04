@@ -16,7 +16,7 @@ namespace DataRepositoryTests
         [TestMethod]
         public void DeleteProduct()
         {
-            DataRepository.DeleteProduct(3);
+            DataRepository.DeleteProduct(2);
         }
 
         [TestMethod]

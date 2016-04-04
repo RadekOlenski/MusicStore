@@ -12,6 +12,7 @@ namespace MusicStore
     {
         public LiveAlbum(string Name, double Price) : base(Name, Price)
         {
+            
 
         }
     }

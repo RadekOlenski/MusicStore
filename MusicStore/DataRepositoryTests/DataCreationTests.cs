@@ -9,6 +9,9 @@ namespace DataRepositoryTests
     //This test class contains methods responsible for checking objects creating in collections from DataRepository Class
     public class DataCreationTests
     {
+
+
+
         [TestMethod]
         //This method tests creating new Client Objects
         public void CreateClient()

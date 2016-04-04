@@ -10,6 +10,17 @@ namespace DataRepositoryTests
     //of objects in DataRepository Class collections
     public class DataReadTests
     {
+        private DataRepository sut;
+
+        [TestInitialize]
+        private void init()
+        {
+            sut = new DataRepository();
+            sut.CreateProduct(ProductType.KEYBOARD, "Dupa", 20000); 
+            sut.CreateClient("Adam", "Nowak", "Drzewna", "Lodz", 1990);
+            sut.CreateTransaction(1, 2, "21.04.2000");
+        }
+
         [TestMethod]
         //This method tests printing out every Product from Products Dictionary, along with its properties
         public void ReadAllProducts()
@@ -33,7 +44,7 @@ namespace DataRepositoryTests
         [TestMethod]
         public void GetSpecificClient()
         {
-            DataRepository.GetSpecificClient(2);   
+            DataRepository.GetSpecificClient(1);
         }
 
         [TestMethod]
@@ -45,7 +56,7 @@ namespace DataRepositoryTests
         [TestMethod]
         public void GetSpecificTransaction()
         {
-            DataRepository.GetSpecificTransaction(0);
+            DataRepository.GetSpecificTransaction(1);
         }
     }
     #endregion

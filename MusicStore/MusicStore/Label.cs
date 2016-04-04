@@ -10,5 +10,6 @@ namespace MusicStore
 {
     class Label
     {
+
     }
 }
