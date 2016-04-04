@@ -16,26 +16,34 @@ namespace MusicStore
             this.Name = Name;
             this.Price = Price;
         }
+
+        static Product()
+        {
+            _generalProductID = 0;
+        }
         #endregion
 
         #region Variables
-        private static int _productID = 0;
+
+        private static int _generalProductID;
+
+        #endregion
+
+        #region Properties
 
         public string Name { get; set; }
 
         public double Price { get; set; }
+
+        public static int GeneralProductID { get { return _generalProductID; } }
+
         #endregion
 
         #region Public Methods
         public static int GenerateProductID()
         {
-                _productID++;
-                return _productID - 1;
-        }
-
-        public int GetProductID()
-        {
-            return _productID;
+                _generalProductID++;
+                return GeneralProductID - 1;
         }
 
         #endregion

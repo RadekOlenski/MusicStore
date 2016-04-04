@@ -19,7 +19,16 @@ namespace MusicStore
             Clients = new List<Client>();
             Products = new Dictionary<int, Product>();
             Transactions = new ObservableCollection<Transaction>();
+            //ClientsIDCounter = 0;
+            //ProductsIDCounter = 0;
         }
+
+        #endregion
+
+        #region Properties
+
+        //public static int ClientsIDCounter { get; set; }
+        //public static int ProductsIDCounter { get; set; }
 
         #endregion
 
@@ -30,27 +39,27 @@ namespace MusicStore
         #endregion
 
         #region Data Creation Methods
-        public  void CreateProduct(int Type, string Name, double Price)
+        public void CreateProduct(ProductType Type, string Name, double Price)
         {
             //Function adds new product to the Products Dictionary, according to the Type of product passed from database
             switch (Type)
             {
-                case ProductType.GUITAR:
+                case ProductType.Guitar:
                     Products.Add(Product.GenerateProductID(), new Guitar(Name, Price));
                     break;
-                case ProductType.KEYBOARD:
+                case ProductType.Keyboard:
                     Products.Add(Product.GenerateProductID(), new Keyboard(Name, Price));
                     break;
-                case ProductType.LONGPLAY:
+                case ProductType.Longplay:
                     Products.Add(Product.GenerateProductID(), new LongPlay(Name, Price));
                     break;
-                case ProductType.LIVEALBUM:
+                case ProductType.LiveAlbum:
                     Products.Add(Product.GenerateProductID(), new LiveAlbum(Name, Price));
                     break;
             }
         }
 
-        public  void CreateClient(string Name, string Surname, string Street, string City, int BirthYear)
+        public void CreateClient(string Name, string Surname, string Street, string City, int BirthYear)
         {
             //This method add new Client object to the Clients List, with all object properties passed from database 
             Clients.Add(new Client(Name, Surname, Street, City, BirthYear));
@@ -195,7 +204,7 @@ namespace MusicStore
             {
                 if (product.Value.Price > RequiredPrice)
                 {
-                    GetSpecificProduct(product.Value.GetProductID());
+                    GetSpecificProduct(product.Key);
                 }
             }
         }

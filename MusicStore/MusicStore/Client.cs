@@ -21,9 +21,14 @@ namespace MusicStore
             this.BirthYear = BirthYear;
         }
         #endregion
+       
+        #region Variables
 
-        #region Client Info Properties
         private int _clientID = 0;
+
+        #endregion
+
+        #region Properties
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Street { get; set; }
