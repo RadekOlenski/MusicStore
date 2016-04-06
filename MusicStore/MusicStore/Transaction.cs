@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicStore
 {
-    class Transaction
+    public class Transaction
     {
         #region Constructor
         public Transaction(int ClientID, int ProductID, string Date)

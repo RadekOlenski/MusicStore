@@ -30,13 +30,28 @@ namespace MusicStore
         //public static int ClientsIDCounter { get; set; }
         //public static int ProductsIDCounter { get; set; }
 
+        //Property used to implement Dependency Injection
+        public IFillRepository FillRepository { get; set; }
         #endregion
 
         #region Data Collections
-         List<Client> Clients;
+        List<Client> Clients;
          Dictionary<int, Product> Products;
          ObservableCollection<Transaction> Transactions;
         #endregion
+
+        public void FillClients()
+        {
+            FillRepository.CreateClients(Clients);
+        }
+        public void FillProducts()
+        {
+            FillRepository.CreateProducts(Products);
+        }
+        public void FillTransactions()
+        {
+            FillRepository.CreateTransactions(Transactions);
+        }
 
         #region Data Creation Methods
         public void CreateProduct(ProductType Type, string Name, double Price)

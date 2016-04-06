@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicStore
 {
-    class LongPlay : MusicAlbum
+    public class LongPlay : MusicAlbum
     {
         public LongPlay(string Name, double Price) : base(Name, Price)
         {

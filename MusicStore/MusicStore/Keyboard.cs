@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicStore
 {
-    class Keyboard : Instrument
+    public class Keyboard : Instrument
     {
         public Keyboard(string Name, double Price) : base(Name, Price)
         {

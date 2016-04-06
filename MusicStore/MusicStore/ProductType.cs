@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicStore
 {
-    //This class is created to store const values representing different types of products. These values can be accessed in every other class
-    //Instead of using not meaningful numbers you can use const property like: "ProductType.Guitar"
+    //Enum type for products
     public enum ProductType
     {
         Guitar = 0,

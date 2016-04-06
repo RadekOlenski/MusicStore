@@ -42,8 +42,8 @@ namespace MusicStore
         #region Public Methods
         public static int GenerateProductID()
         {
-                _generalProductID++;
-                return GeneralProductID - 1;
+            _generalProductID++;
+            return GeneralProductID - 1;
         }
 
         #endregion

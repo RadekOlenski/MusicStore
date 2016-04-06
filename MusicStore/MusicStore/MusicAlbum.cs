@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicStore
 {
-    class MusicAlbum : Product
+    public class MusicAlbum : Product
     {
         public MusicAlbum(string Name, double Price) : base(Name, Price)
         {
