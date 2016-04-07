@@ -27,9 +27,6 @@ namespace MusicStore
 
         #region Properties
 
-        //public static int ClientsIDCounter { get; set; }
-        //public static int ProductsIDCounter { get; set; }
-
         //Property used to implement Dependency Injection
         public IFillRepository FillRepository { get; set; }
         #endregion
@@ -39,6 +36,8 @@ namespace MusicStore
          Dictionary<int, Product> Products;
          ObservableCollection<Transaction> Transactions;
         #endregion
+
+        #region Fill Repository Methods
 
         public void FillClients()
         {
@@ -51,7 +50,9 @@ namespace MusicStore
         public void FillTransactions()
         {
             FillRepository.CreateTransactions(Transactions);
-        }
+        } 
+
+        #endregion
 
         #region Data Creation Methods
         public void CreateProduct(ProductType Type, string Name, double Price)
@@ -208,7 +209,7 @@ namespace MusicStore
             {
                 if (DateTime.Now.Year - client.BirthYear >= RequiredAge)
                 {
-                    GetSpecificClient(client.GetClientID());
+                    //GetSpecificClient(client.GetClientID());
                 }
             }
         }
