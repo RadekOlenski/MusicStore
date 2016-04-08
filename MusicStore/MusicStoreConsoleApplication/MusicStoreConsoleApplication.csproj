@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="DataService.cs" />
     <Compile Include="FillRepository.cs" />
+    <Compile Include="FillRepositoryFromFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

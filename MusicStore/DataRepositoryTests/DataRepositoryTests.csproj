@@ -56,10 +56,15 @@
     <Compile Include="DataDeleteTests.cs" />
     <Compile Include="DataReadTests.cs" />
     <Compile Include="DataUpdateTests.cs" />
+    <Compile Include="FillFromFileTests.cs" />
     <Compile Include="FilterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MusicStoreConsoleApplication\MusicStoreConsoleApplication.csproj">
+      <Project>{b287a950-e7a9-480f-8d92-0114ae7418df}</Project>
+      <Name>MusicStoreConsoleApplication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MusicStore\MusicStore.csproj">
       <Project>{8eefc4b1-0432-456e-b443-fe88692db68e}</Project>
       <Name>MusicStore</Name>

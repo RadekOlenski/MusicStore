@@ -24,7 +24,7 @@ namespace MusicStore
        
         #region Variables
 
-        private int _clientID = 0;
+        private static int _generalClientID = 0;
 
         #endregion
 
@@ -34,16 +34,14 @@ namespace MusicStore
         public string Street { get; set; }
         public string City { get; set; }
         public int BirthYear { get; set; }
+        public static int GeneralClientID { get { return _generalClientID; } }
         #endregion
 
         #region Methods
-        private void GenerateClientID()
+        public static int GenerateClientID()
         {
-            _clientID++;
-        }
-        public int GetClientID()
-        {
-            return _clientID;
+            _generalClientID++;
+            return GeneralClientID - 1;
         }
         #endregion
     }

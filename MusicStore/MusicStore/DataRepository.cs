@@ -27,20 +27,18 @@ namespace MusicStore
 
         #region Properties
 
-        //public static int ClientsIDCounter { get; set; }
-        //public static int ProductsIDCounter { get; set; }
-
         //Property used to implement Dependency Injection
         public IFillRepository FillRepository { get; set; }
         #endregion
 
         #region Data Collections
         List<Client> Clients;
-        Dictionary<int, Product> Products;
-        ObservableCollection<Transaction> Transactions;
+         Dictionary<int, Product> Products;
+         ObservableCollection<Transaction> Transactions;
         #endregion
 
-        #region Fill Interface Methods
+        #region Fill Repository Methods
+
         public void FillClients()
         {
             FillRepository.CreateClients(Clients);
@@ -53,6 +51,8 @@ namespace MusicStore
         {
             FillRepository.CreateTransactions(Transactions);
         }
+        #endregion
+
         #endregion
 
         #region Data Creation Methods
@@ -211,7 +211,7 @@ namespace MusicStore
 
         public void DeleteClient(int ID)
         {
-            Clients.Remove(Clients.ElementAt(ID));
+           Clients.Remove(Clients.ElementAt(ID));
         }
 
         public void DeleteProduct(int ID)
@@ -234,7 +234,7 @@ namespace MusicStore
             {
                 if (DateTime.Now.Year - client.BirthYear >= RequiredAge)
                 {
-                    GetSpecificClient(client.GetClientID());
+                    //GetSpecificClient(client.GetClientID());
                 }
             }
         }
