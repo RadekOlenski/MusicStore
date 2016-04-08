@@ -53,8 +53,6 @@ namespace MusicStore
         }
         #endregion
 
-        #endregion
-
         #region Data Creation Methods
         public void CreateProduct(ProductType Type, string Name, double Price)
         {
