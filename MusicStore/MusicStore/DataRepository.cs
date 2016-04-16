@@ -33,8 +33,8 @@ namespace MusicStore
 
         #region Data Collections
         List<Client> Clients;
-         Dictionary<int, Product> Products;
-         ObservableCollection<Transaction> Transactions;
+        Dictionary<int, Product> Products;
+        ObservableCollection<Transaction> Transactions;
         #endregion
 
         #region Fill Repository Methods
@@ -109,7 +109,7 @@ namespace MusicStore
             {
                 //Console.WriteLine("Client Name: {0} {1}, Street: {2}, City: {3}, Year of birth: {4}",
                 //    client.Name, client.Surname, client.Street, client.City, client.BirthYear);
-                result += "Client Name: " + client.Name  + " " + client.Surname + ", Street: " + client.Street
+                result += "Client Name: " + client.Name + " " + client.Surname + ", Street: " + client.Street
                     + ", City: " + client.City + ", Year of birth: " + client.BirthYear + "\n";
             }
             return result;
@@ -132,12 +132,19 @@ namespace MusicStore
 
         public string GetSpecificProduct(int ID)
         {
-            string result = "";
-            result += "Product Type: " + Products.ElementAt(ID).Value + ", Name: " + Products[ID].Name
-                    + ", Price: " + Products[ID].Price + "\n";
-            //Console.WriteLine("Product Type: {0}, Name: {1}, Price: {2}",
-            //         Products.ElementAt(ID).Value, Products[ID].Name, Products[ID].Price);
-            return result;
+            if (Products.ContainsKey(ID))
+            {
+                string result = "";
+                result += "Product Type: " + Products.ElementAt(ID).Value + ", Name: " + Products[ID].Name
+                        + ", Price: " + Products[ID].Price + "\n";
+                //Console.WriteLine("Product Type: {0}, Name: {1}, Price: {2}",
+                //         Products.ElementAt(ID).Value, Products[ID].Name, Products[ID].Price);
+                return result;
+            }
+            else
+            {
+                throw new System.InvalidOperationException("That product does not exists!");
+            }
         }
 
         public string GetSpecificClient(int ID)
@@ -209,7 +216,7 @@ namespace MusicStore
 
         public void DeleteClient(int ID)
         {
-           Clients.Remove(Clients.ElementAt(ID));
+            Clients.Remove(Clients.ElementAt(ID));
         }
 
         public void DeleteProduct(int ID)
