@@ -1,0 +1,5 @@
+produkt1;100
+produkt2;500
+produkt3;1000
+produkt4;10230,23
+produkt5;100,24
