@@ -15,12 +15,6 @@ namespace DataRepositoryDeleteUnitTest
             sut = new DataRepository();
         }
 
-        [TestCleanup]
-        public void clean()
-        {
-            //Object cleanup
-        }
-
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void DeleteClientFail()

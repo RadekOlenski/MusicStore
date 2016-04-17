@@ -23,7 +23,7 @@ namespace FillDataRepositoryTest
         {
             List<Client> clients = new List<Client>();
             sut.CreateClients(clients);
-            Assert.IsTrue(clients.Count == 5);
+            Assert.AreEqual(5, clients.Count);
         }
 
         [TestMethod]
@@ -31,7 +31,7 @@ namespace FillDataRepositoryTest
         {
             Dictionary<int, Product> products = new Dictionary<int, Product>();
             sut.CreateProducts(products);
-            Assert.IsTrue(products.Count == 4);
+            Assert.AreEqual(4, products.Count);
         }
 
         [TestMethod]
@@ -39,7 +39,7 @@ namespace FillDataRepositoryTest
         {
             ObservableCollection<Transaction> transactions = new ObservableCollection<Transaction>();
             sut.CreateTransactions(transactions);
-            Assert.IsTrue(transactions.Count == 1);
+            Assert.AreEqual(1, transactions.Count);
         }
     }
 }

@@ -15,7 +15,6 @@ namespace DataRepositoryCreateUnitTest
         {
             //Initialization of sut
             sut = new DataRepository();
-            sut.CreateClient("Adam", "Nowak", "Drzewna", "Lodz", 1990);
         }
 
         [TestMethod]
@@ -26,8 +25,9 @@ namespace DataRepositoryCreateUnitTest
             {
                 int counter = sut.CountClients();
                 sut.CreateClient("Adam", "Nowak", "Drzewna", "Lodz", 1990);
-                Assert.IsTrue(sut.CountClients() == counter + 1);
+                Assert.AreEqual(counter + 1, sut.CountClients());
             }
+            Assert.AreEqual(1000, sut.CountClients());
         }
 
         [TestMethod]
@@ -38,8 +38,9 @@ namespace DataRepositoryCreateUnitTest
             {
                 int counter = sut.CountProducts();
                 sut.CreateProduct(ProductType.Guitar, "RX100", 1027.45);
-                Assert.IsTrue(sut.CountProducts() == counter + 1);
+                Assert.AreEqual(counter + 1, sut.CountProducts());
             }
+            Assert.AreEqual(1000, sut.CountProducts());
         }
 
         [TestMethod]
@@ -49,8 +50,9 @@ namespace DataRepositoryCreateUnitTest
             {
                 int counter = sut.CountTransactions();
                 sut.CreateTransaction(0, 0, "21.04.2000");
-                Assert.IsTrue(sut.CountTransactions() == counter + 1);
+                Assert.AreEqual(counter + 1, sut.CountTransactions());
             }
+            Assert.AreEqual(1000, sut.CountTransactions());
         }
     }
 }
