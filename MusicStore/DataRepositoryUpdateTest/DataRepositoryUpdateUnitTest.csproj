@@ -56,6 +56,12 @@
     <Compile Include="DataUpdateTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MusicStore\MusicStore.csproj">
+      <Project>{8EEFC4B1-0432-456E-B443-FE88692DB68E}</Project>
+      <Name>MusicStore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

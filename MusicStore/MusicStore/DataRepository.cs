@@ -212,7 +212,7 @@ namespace MusicStore
 
         #region Data Update Client Collection
         //Methods used to update informations about client selected by user 
-        //In case that user selected client that not exists, method is throwing out InvalidOperationException
+        //In case that user selected client that not exists, method is throwing out ArgumentOutOfRangeException
         public void UpdateClientName(int ClientID, string NewValue)
         {
             if (Clients.ElementAt(ClientID) != null)
@@ -221,7 +221,7 @@ namespace MusicStore
             }
             else
             {
-                throw new InvalidOperationException("That client does not exists!");
+                throw new ArgumentOutOfRangeException("That client does not exists!");
             }
         }
 
@@ -233,7 +233,7 @@ namespace MusicStore
             }
             else
             {
-                throw new InvalidOperationException("That client does not exists!");
+                throw new ArgumentOutOfRangeException("That client does not exists!");
             }
         }
 
@@ -245,7 +245,7 @@ namespace MusicStore
             }
             else
             {
-                throw new InvalidOperationException("That client does not exists!");
+                throw new ArgumentOutOfRangeException("That client does not exists!");
             }
         }
 
@@ -257,7 +257,7 @@ namespace MusicStore
             }
             else
             {
-                throw new InvalidOperationException("That client does not exists!");
+                throw new ArgumentOutOfRangeException("That client does not exists!");
             }
         }
 
@@ -269,7 +269,7 @@ namespace MusicStore
             }
             else
             {
-                throw new InvalidOperationException("That client does not exists!");
+                throw new ArgumentOutOfRangeException("That client does not exists!");
             }
         }
 
