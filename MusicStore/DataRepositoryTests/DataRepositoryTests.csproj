@@ -54,7 +54,6 @@
   <ItemGroup>
     <Compile Include="DataCreationTests.cs" />
     <Compile Include="FillFromFileTests.cs" />
-    <Compile Include="FilterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -52,6 +52,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataFilterFailTests.cs" />
     <Compile Include="DataFilterTests.cs" />
     <Compile Include="DataReadFailTests.cs" />
     <Compile Include="DataReadTests.cs" />

@@ -355,14 +355,14 @@ namespace MusicStore
                 {
                     if (DateTime.Now.Year - Clients.ElementAt(i).BirthYear >= RequiredAge)
                     {
-                        result += GetSpecificClient(i);
+                        result += GetSpecificClient(i) + "\n";
                     }
                 }
                 return result;
             }
             else
             {
-                throw new System.InvalidOperationException("There is no clients in repository!");
+                throw new System.ArgumentOutOfRangeException("There is no clients in repository!");
             }
         }
 
@@ -375,7 +375,7 @@ namespace MusicStore
                 {
                     if (product.Value.Price > RequiredPrice)
                     {
-                        result += GetSpecificProduct(product.Key);
+                        result += GetSpecificProduct(product.Key) + "\n";
                     }
                 }
                 return result;
