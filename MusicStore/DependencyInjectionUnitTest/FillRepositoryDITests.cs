@@ -40,14 +40,19 @@ namespace DependencyInjectionUnitTest
             Assert.AreEqual(4, sut.CountProducts());
             sut.FillTransactions();
             Assert.AreEqual(1, sut.CountTransactions());
+        }
 
+        [TestMethod]
+        public void PropertyInjectionDataRepositoryFromFile()
+        {
             FillRepositoryFromFile _FillRepositoryFromFile = new FillRepositoryFromFile();
             sut.FillRepository = _FillRepositoryFromFile;
-            Assert.AreEqual(5, sut.CountClients());
+            sut.FillClients();
+            Assert.AreEqual(4, sut.CountClients());
             sut.FillProducts();
-            Assert.AreEqual(4, sut.CountProducts());
+            Assert.AreEqual(5, sut.CountProducts());
             sut.FillTransactions();
-            Assert.AreEqual(1, sut.CountTransactions());
+            Assert.AreEqual(2, sut.CountTransactions());
         }
     }
 }
