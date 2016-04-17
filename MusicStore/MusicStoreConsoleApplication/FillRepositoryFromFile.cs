@@ -30,7 +30,7 @@ namespace MusicStore.ConsoleApplication
                 string[] parts = line.Split(';');
                 if (parts.Length == 2)
                 {
-                    Products.Add(Product.GenerateProductID(), new Product(parts[0], Int32.Parse(parts[1]))); 
+                    Products.Add(Product.GenerateProductID(), new Product(parts[0], Double.Parse(parts[1], System.Globalization.CultureInfo.InvariantCulture))); 
                 }
             }
         }

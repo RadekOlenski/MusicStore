@@ -22,9 +22,10 @@ namespace FillDataRepositoryTest
         public void ReadClientsFile()
         {
             List<string> expectedList = new List<string>();
-            expectedList.Add("mama;tata;");
-            expectedList.Add("syasdasd444;");
-            expectedList.Add("weeqwlqwr;qqdsadda");
+            expectedList.Add("Edward;Smith;Long Street;Longtown;1960");
+            expectedList.Add("Roger;Smaul;Small Street;Smalltown;2010");
+            expectedList.Add("Adam;Framework;Frame Street;Frametown;1984");
+            expectedList.Add("Andrew;Bracket;Bracket Street;Bracketown;1200");
 
             List<string> actualList = sut.FileToString("clients.txt");
             Assert.AreEqual(expectedList[0], actualList[0]);
@@ -39,8 +40,8 @@ namespace FillDataRepositoryTest
             expectedList.Add("produkt1;100");
             expectedList.Add("produkt2;500");
             expectedList.Add("produkt3;1000");
-            expectedList.Add("produkt4;10230");
-            expectedList.Add("produkt5;100.234");
+            expectedList.Add("produkt4;10230,23");
+            expectedList.Add("produkt5;100,24");
 
             List<string> actualList = sut.FileToString("products.txt");
             Assert.AreEqual(expectedList[0], actualList[0]);
