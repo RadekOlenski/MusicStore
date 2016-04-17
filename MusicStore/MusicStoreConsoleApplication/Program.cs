@@ -11,6 +11,15 @@ namespace MusicStore.ConsoleApplication
         static void Main(string[] args)
         {
             DataRepository _DataRepository = new DataRepository();
+            _DataRepository.CreateProduct(ProductType.Keyboard, "Dupa", 100);
+            try
+            {
+                _DataRepository.ReadAllProducts();
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine(e.Message);
+            }
             _DataRepository.FillRepository = new FillRepository();
             _DataRepository.FillClients();
             _DataRepository.FillProducts();
@@ -19,10 +28,23 @@ namespace MusicStore.ConsoleApplication
             Console.WriteLine(_DataRepository.ReadAllProducts());
             Console.WriteLine(_DataRepository.ReadAllTransactions());
 
-            DataService _DataService = new DataService();
-            _DataService.DataRepository = _DataRepository;
+            DataService _DataService = new DataService(_DataRepository);
 
-            Console.WriteLine(_DataService.ReadAllTransactions());
+            try
+            {
+                _DataRepository.GetSpecificProduct(10);
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            Console.ReadLine();
+            _DataRepository.CreateTransaction(2, 2, "17 wrzesnia");
+            Console.ReadLine();
+            _DataRepository.CreateTransaction(5, 4, "13 wrzesnia");
+            Console.ReadLine();
+            _DataRepository.DeleteTransaction(1);
             Console.ReadLine();
         }
     }

@@ -87,10 +87,12 @@ namespace MusicStore
             //This method add new Transaction to the Transactions Observable Collection, with all object properties given by user
             Transactions.Add(new Transaction(ClientID, ProductID, Date));
         }
+
         #endregion
 
         #region Data Read Methods
         //Methods used to pull out informations about every object in repository, together or individually
+
         public string ReadAllProducts()
         {
             //This method returns string with info about every product from collection
@@ -145,6 +147,11 @@ namespace MusicStore
             {
                 throw new System.ArgumentOutOfRangeException("There is no transactions in repository!");
             }
+        }
+
+        public ObservableCollection <Transaction> GetAllTransactions()
+        {
+            return Transactions;
         }
 
         public string GetSpecificProduct(int ID)
