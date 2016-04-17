@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MusicStore;
 
-namespace DataRepositoryTests
+namespace DataRepositoryReadUnitTest
 {
     #region Read Tests
     [TestClass]
@@ -11,7 +11,7 @@ namespace DataRepositoryTests
     public class DataReadTests
     {
         //System Under Test object
-        public DataRepository sut;
+        private DataRepository sut;
 
         [TestInitialize]
         public void init()

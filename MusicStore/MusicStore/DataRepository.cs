@@ -219,7 +219,7 @@ namespace MusicStore
 
         #region Data Update Client Collection
         //Methods used to update informations about client selected by user 
-        //In case that user selected client that not exists, method is throwing out InvalidOperationException
+        //In case that user selected client that not exists, method is throwing out ArgumentOutOfRangeException
         public void UpdateClientName(int ClientID, string NewValue)
         {
             if (Clients.ElementAt(ClientID) != null)
@@ -228,7 +228,7 @@ namespace MusicStore
             }
             else
             {
-                throw new InvalidOperationException("That client does not exists!");
+                throw new ArgumentOutOfRangeException("That client does not exists!");
             }
         }
 
@@ -240,7 +240,7 @@ namespace MusicStore
             }
             else
             {
-                throw new InvalidOperationException("That client does not exists!");
+                throw new ArgumentOutOfRangeException("That client does not exists!");
             }
         }
 
@@ -252,7 +252,7 @@ namespace MusicStore
             }
             else
             {
-                throw new InvalidOperationException("That client does not exists!");
+                throw new ArgumentOutOfRangeException("That client does not exists!");
             }
         }
 
@@ -264,7 +264,7 @@ namespace MusicStore
             }
             else
             {
-                throw new InvalidOperationException("That client does not exists!");
+                throw new ArgumentOutOfRangeException("That client does not exists!");
             }
         }
 
@@ -276,7 +276,7 @@ namespace MusicStore
             }
             else
             {
-                throw new InvalidOperationException("That client does not exists!");
+                throw new ArgumentOutOfRangeException("That client does not exists!");
             }
         }
 
@@ -362,14 +362,14 @@ namespace MusicStore
                 {
                     if (DateTime.Now.Year - Clients.ElementAt(i).BirthYear >= RequiredAge)
                     {
-                        result += GetSpecificClient(i);
+                        result += GetSpecificClient(i) + "\n";
                     }
                 }
                 return result;
             }
             else
             {
-                throw new System.InvalidOperationException("There is no clients in repository!");
+                throw new System.ArgumentOutOfRangeException("There is no clients in repository!");
             }
         }
 
@@ -382,7 +382,7 @@ namespace MusicStore
                 {
                     if (product.Value.Price > RequiredPrice)
                     {
-                        result += GetSpecificProduct(product.Key);
+                        result += GetSpecificProduct(product.Key) + "\n";
                     }
                 }
                 return result;
