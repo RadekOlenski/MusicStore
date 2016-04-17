@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,39 @@ namespace MusicStore.ConsoleApplication
         #region Properties
         public DataRepository DataRepository { get; set; }
 
+        #endregion
+
+        #region Constructors
+        public DataService(DataRepository DataRepository)
+        {
+            this.DataRepository = DataRepository;
+            DataRepository.GetAllTransactions().CollectionChanged += DataService_CollectionChanged;
+        }
+        #endregion
+
+        #region Transactions Actions Handling
+        private void DataService_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            Console.WriteLine("Action: {0}", e.Action);
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                Console.WriteLine("Message: New transaction has been added.\nDetails:");
+                foreach (Transaction trans in e.NewItems)
+                {
+                    Console.WriteLine(trans.ToString());
+                }
+                Console.WriteLine();
+            }
+            if (e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                Console.WriteLine("Message: New transaction has been removed.\nDetails:");
+                foreach (Transaction trans in e.OldItems)
+                {
+                    Console.WriteLine(trans.ToString());
+                }
+                Console.WriteLine();
+            }
+        } 
         #endregion
 
         #region Read Methods
