@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{90B3D6E7-72AD-4836-8F41-F40C670C8721}</ProjectGuid>
+    <ProjectGuid>{076A6C30-5CD8-4E01-8D46-D6BB7E670E4F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataRepositoryTests</RootNamespace>
-    <AssemblyName>DataRepositoryTests</AssemblyName>
+    <RootNamespace>DataRepositoryReadUnitTest</RootNamespace>
+    <AssemblyName>DataRepositoryReadUnitTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -52,19 +52,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DataCreationTests.cs" />
-    <Compile Include="DataUpdateTests.cs" />
-    <Compile Include="FillFromFileTests.cs" />
-    <Compile Include="FilterTests.cs" />
+    <Compile Include="DataReadFailTests.cs" />
+    <Compile Include="DataReadTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MusicStoreConsoleApplication\MusicStoreConsoleApplication.csproj">
-      <Project>{b287a950-e7a9-480f-8d92-0114ae7418df}</Project>
-      <Name>MusicStoreConsoleApplication</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MusicStore\MusicStore.csproj">
-      <Project>{8eefc4b1-0432-456e-b443-fe88692db68e}</Project>
+      <Project>{8EEFC4B1-0432-456E-B443-FE88692DB68E}</Project>
       <Name>MusicStore</Name>
     </ProjectReference>
   </ItemGroup>
