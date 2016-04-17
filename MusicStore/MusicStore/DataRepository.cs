@@ -40,15 +40,37 @@ namespace MusicStore
         //This is usage of methods provided from FillRepository Interface implementation applied with Dependency Injection to FillRepository property
         public void FillClients()
         {
-            FillRepository.CreateClients(Clients);
+            if(FillRepository != null)
+            {
+                FillRepository.CreateClients(Clients);
+            }
+            else
+            {
+                throw new System.NullReferenceException("Fill Repository property is empty!");
+            }
+
         }
         public void FillProducts()
         {
-            FillRepository.CreateProducts(Products);
+            if (FillRepository != null)
+            {
+                FillRepository.CreateProducts(Products);
+            }
+            else
+            {
+                throw new System.NullReferenceException("Fill Repository property is empty!");
+            }
         }
         public void FillTransactions()
         {
-            FillRepository.CreateTransactions(Transactions);
+            if (FillRepository != null)
+            {
+                FillRepository.CreateTransactions(Transactions);
+            }
+            else
+            {
+                throw new System.NullReferenceException("Fill Repository property is empty!");
+            }
         }
         #endregion
 

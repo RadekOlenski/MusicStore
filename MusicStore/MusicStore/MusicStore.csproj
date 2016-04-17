@@ -67,10 +67,8 @@
     <Compile Include="IFillRepository.cs" />
     <Compile Include="Instrument.cs" />
     <Compile Include="Keyboard.cs" />
-    <Compile Include="Label.cs" />
     <Compile Include="LiveAlbum.cs" />
     <Compile Include="LongPlay.cs" />
-    <Compile Include="Manufacturer.cs" />
     <Compile Include="MusicAlbum.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductType.cs" />

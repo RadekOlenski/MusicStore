@@ -7,19 +7,23 @@ using System.Threading.Tasks;
 
 namespace MusicStore.ConsoleApplication
 {
-    class DataService
+    public class DataService
     {
-        #region Properties
-        public DataRepository DataRepository { get; set; }
-
-        #endregion
-
         #region Constructors
         public DataService(DataRepository DataRepository)
         {
             this.DataRepository = DataRepository;
             DataRepository.GetAllTransactions().CollectionChanged += DataService_CollectionChanged;
         }
+        public DataService()
+        {
+
+        }
+        #endregion
+
+        #region Properties
+        public DataRepository DataRepository { get; set; }
+
         #endregion
 
         #region Transactions Actions Handling
@@ -62,6 +66,11 @@ namespace MusicStore.ConsoleApplication
         public string ReadAllTransactions()
         {
             return DataRepository.ReadAllTransactions();
+        }
+
+        public string GetSpecificClient(int ID)
+        {
+            return DataRepository.GetSpecificClient(ID);
         }
 
         #endregion
@@ -140,6 +149,23 @@ namespace MusicStore.ConsoleApplication
             DataRepository.FilterByGreaterProductPrice(RequiredPrice);
         }
 
+        #endregion
+
+        #region Count Objects
+        public int CountClients()
+        {
+           return DataRepository.CountClients();
+        }
+
+        public int CountProducts()
+        {
+           return DataRepository.CountProducts();
+        }
+
+        public int CountTransactions()
+        {
+           return DataRepository.CountTransactions();
+        }
         #endregion
     }
 }

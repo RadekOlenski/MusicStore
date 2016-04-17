@@ -6,7 +6,7 @@ using MusicStore.ConsoleApplication;
 namespace DependencyInjectionUnitTest
 {
     [TestClass]
-    public class FillRepositoryDITests
+    public class FillRepositoryPropertyInjectionTests
     {
         DataRepository sut;
 
