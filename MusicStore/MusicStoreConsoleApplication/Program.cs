@@ -40,6 +40,7 @@ namespace MusicStore.ConsoleApplication
                 Console.WriteLine(e.Message);
             }
 
+            Console.WriteLine(_DataService.ReadAllTransactions());
             Console.ReadLine();
         }
     }

@@ -15,19 +15,19 @@ namespace MusicStore.ConsoleApplication
 
         #region Read Methods
 
-        public void ReadAllClients()
+        public string ReadAllClients()
         {
-            DataRepository.ReadAllClients();
+            return DataRepository.ReadAllClients();
         }
 
-        public void ReadAllProducts()
+        public string ReadAllProducts()
         {
-            DataRepository.ReadAllProducts();
+            return DataRepository.ReadAllProducts();
         }
 
-        public void ReadAllTransactions()
+        public string ReadAllTransactions()
         {
-            DataRepository.ReadAllTransactions();
+            return DataRepository.ReadAllTransactions();
         }
 
         #endregion

@@ -34,6 +34,11 @@ namespace MusicStore
         }
         #endregion
 
+        public override string ToString()
+        {
+            return "Transaction Date: " + this.Date;
+        }
+
 
     }
 }

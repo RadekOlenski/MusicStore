@@ -58,6 +58,7 @@ namespace MusicStore
         {
             //Function adds new Product to the Products Dictionary, according to the Type of product selected by user 
             //Selected type is checking with ProductType enumerable type
+            //int ID = Product.GeneralProductID;
             switch (Type)
             {
                 case ProductType.Guitar:
@@ -73,18 +74,35 @@ namespace MusicStore
                     Products.Add(Product.GenerateProductID(), new LiveAlbum(Name, Price));
                     break;
             }
+            //ID++;
+            //if(!Products.ContainsKey(ID))
+            //{
+            //    throw new NullReferenceException("Product was not created!");
+            //}
         }
 
         public void CreateClient(string Name, string Surname, string Street, string City, int BirthYear)
         {
             //This method add new Client to the Clients List, with all object properties given by user
+            //int ID = Clients.Count;
             Clients.Add(new Client(Name, Surname, Street, City, BirthYear));
+            //    ID++;
+            //if (Clients.ElementAt(ID) == null)
+            //{
+            //    throw new NullReferenceException("Client was not created!");
+            //}
         }
 
         public void CreateTransaction(int ClientID, int ProductID, string Date)
         {
             //This method add new Transaction to the Transactions Observable Collection, with all object properties given by user
+            //int ID = Transactions.Count;
             Transactions.Add(new Transaction(ClientID, ProductID, Date));
+            //ID++;
+            //if (Transactions.ElementAt(ID) == null)
+            //{
+            //    throw new NullReferenceException("Transaction was not created!");
+            //}
         }
         #endregion
 
@@ -98,8 +116,7 @@ namespace MusicStore
                 string result = "";
                 for (int i = 0; i < Products.Count; i++)
                 {
-                    result += "Product Type: " + Products.ElementAt(i).Value + ", Name: " + Products[i].Name
-                           + ", Price: " + Products[i].Price + "\n";
+                    result += Products.ElementAt(i).ToString() + "\n";
                 }
                 return result;
             }
@@ -117,8 +134,7 @@ namespace MusicStore
                 string result = "";
                 foreach (Client client in Clients)
                 {
-                    result += "Client Name: " + client.Name + " " + client.Surname + ", Street: " + client.Street
-                           + ", City: " + client.City + ", Year of birth: " + client.BirthYear + "\n";
+                    result += client.ToString() + "\n";
                 }
                 return result;
             }
@@ -136,9 +152,9 @@ namespace MusicStore
                 string result = "";
                 foreach (Transaction transaction in Transactions)
                 {
-                    result += "Client Name: " + Clients[transaction.ClientID].Name + " "
-                           + Clients[transaction.ClientID].Surname + ", Product Name: " + Products[transaction.ProductID].Name
-                           + ", Price: " + Products[transaction.ProductID].Price + ", Date: " + transaction.Date + "\n";
+                    result += Clients[transaction.ClientID].ToString() + "\n"
+                       + Products[transaction.ProductID].ToString() + "\n"
+                       + transaction.ToString() + "\n";
                 }
                 return result;
             }
@@ -154,10 +170,7 @@ namespace MusicStore
             //In the case that user selected ID that not exists, method is throwing out a new InvalidOperationException 
             if (Products.ContainsKey(ID))
             {
-                string result = "";
-                result += "Product Type: " + Products.ElementAt(ID).Value + ", Name: " + Products[ID].Name
-                       + ", Price: " + Products[ID].Price + "\n";
-                return result;
+                return Products.ElementAt(ID).ToString();
             }
             else
             {
@@ -169,12 +182,9 @@ namespace MusicStore
         {
             //This method returns string with info about single client. User must enter ID of client.
             //In the case that user selected ID that not exists, method is throwing out a new InvalidOperationException 
-            if (Clients.ElementAt(0) != null)
+            if (Clients.ElementAt(ID) != null)
             {
-                string result = "";
-                result += "Client Name: " + Clients[ID].Name + " " + Clients[ID].Surname + ", Street: "
-                       + Clients[ID].Street + ", City: " + Clients[ID].City + ", Year of birth: " + Clients[ID].BirthYear + "\n";
-                return result;
+                return Clients.ElementAt(ID).ToString();
             }
             else
             {
@@ -186,13 +196,11 @@ namespace MusicStore
         {
             //This method returns string with info about single transaction. User must enter ID of transaction.
             //In the case that user selected ID that not exists, method is throwing out a new InvalidOperationException 
-            if (Transactions.ElementAt(0) != null)
+            if (Transactions.ElementAt(ID) != null)
             {
-                string result = "";
-                result += "Client Name: " + Clients[Transactions[ID].ClientID].Name + " " + Clients[Transactions[ID].ClientID].Surname
-                       + ", Product Name: " + Products[Transactions[ID].ProductID].Name + ", Price: "
-                       + Products[Transactions[ID].ProductID].Price + ", Date: " + Transactions[ID].Date + "\n";
-                return result;
+                return Clients[Transactions[ID].ClientID].ToString() + "\n"
+                       + Products[Transactions[ID].ProductID].ToString() + "\n" 
+                       + Transactions.ElementAt(ID).ToString() + "\n";
             }
             else
             {
@@ -314,6 +322,7 @@ namespace MusicStore
             if (Products.ContainsKey(ID))
             {
                 Products.Remove(ID);
+                Product.DeleteProductID();
             }
             else
             {

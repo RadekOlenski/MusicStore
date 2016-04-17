@@ -43,6 +43,11 @@ namespace MusicStore
             _generalClientID++;
             return GeneralClientID - 1;
         }
+
+        public override string ToString()
+        {
+            return "Client Name: " + this.Name + " " + this.Surname + ", Street: " + this.Street + ", City: " + this.City + ", Year of birth: " + this.BirthYear;
+        }
         #endregion
     }
 }

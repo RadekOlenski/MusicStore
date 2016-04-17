@@ -46,6 +46,17 @@ namespace MusicStore
             return GeneralProductID - 1;
         }
 
+        public static void DeleteProductID()
+        {
+            _generalProductID--;
+        }
+
+        public override string ToString()
+        {
+            string result = "Product Type: " + this.GetType() + ", Name: " + this.Name + ", Price: " + this.Price;
+            return result;
+        }
+
         #endregion
 
     }
