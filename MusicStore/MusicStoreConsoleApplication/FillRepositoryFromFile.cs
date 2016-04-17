@@ -13,7 +13,7 @@ namespace MusicStore.ConsoleApplication
 
         public void CreateClients(List<Client> Clients)
         {
-            foreach ( string line in FileToString("clients.txt"))
+            foreach (string line in FileToString("clients.txt"))
             {
                 string[] parts = line.Split(';');
                 Clients.Add(new Client(parts[0], parts[1], parts[2], parts[3], Int32.Parse(parts[4])));
