@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 #endregion
-//Class responsible for managing all data in project
 
+//Class responsible for storing all data in project
 namespace MusicStore
 {
     public class DataRepository
@@ -22,23 +22,22 @@ namespace MusicStore
             //ClientsIDCounter = 0;
             //ProductsIDCounter = 0;
         }
-
         #endregion
 
         #region Properties
-
-        //Property used to implement Dependency Injection
+        //Property used to gain access to FillRepository Interface implementation, realized with Dependency Injection.
         public IFillRepository FillRepository { get; set; }
         #endregion
 
         #region Data Collections
+        //Declarations of objects collections.
         List<Client> Clients;
         Dictionary<int, Product> Products;
         ObservableCollection<Transaction> Transactions;
         #endregion
 
         #region Fill Repository Methods
-
+        //This is usage of methods provided from FillRepository Interface implementation applied with Dependency Injection to FillRepository property
         public void FillClients()
         {
             FillRepository.CreateClients(Clients);
@@ -54,9 +53,11 @@ namespace MusicStore
         #endregion
 
         #region Data Creation Methods
+        //Methods that can be used to create new object of any type: product, client, transaction
         public void CreateProduct(ProductType Type, string Name, double Price)
         {
-            //Function adds new product to the Products Dictionary, according to the Type of product passed from database
+            //Function adds new Product to the Products Dictionary, according to the Type of product selected by user 
+            //Selected type is checking with ProductType enumerable type
             switch (Type)
             {
                 case ProductType.Guitar:
@@ -76,69 +77,86 @@ namespace MusicStore
 
         public void CreateClient(string Name, string Surname, string Street, string City, int BirthYear)
         {
-            //This method add new Client object to the Clients List, with all object properties passed from database 
+            //This method add new Client to the Clients List, with all object properties given by user
             Clients.Add(new Client(Name, Surname, Street, City, BirthYear));
         }
 
         public void CreateTransaction(int ClientID, int ProductID, string Date)
         {
+            //This method add new Transaction to the Transactions Observable Collection, with all object properties given by user
             Transactions.Add(new Transaction(ClientID, ProductID, Date));
         }
         #endregion
 
         #region Data Read Methods
+        //Methods used to pull out informations about every object in repository, together or individually
         public string ReadAllProducts()
         {
-            //This method prints out every product from collection, with all of its properties and Object Type
-            string result = "";
-            for (int i = 0; i < Products.Count; i++)
+            //This method returns string with info about every product from collection
+            if (Products.ContainsKey(0))
             {
-                //Console.WriteLine("Product Type: {0}, Name: {1}, Price: {2}",
-                //    Products.ElementAt(i).Value, Products[i].Name, Products[i].Price);
-                result += "Product Type: " + Products.ElementAt(i).Value + ", Name: " + Products[i].Name
-                    + ", Price: " + Products[i].Price + "\n";
+                string result = "";
+                for (int i = 0; i < Products.Count; i++)
+                {
+                    result += "Product Type: " + Products.ElementAt(i).Value + ", Name: " + Products[i].Name
+                           + ", Price: " + Products[i].Price + "\n";
+                }
+                return result;
             }
-            return result;
+            else
+            {
+                throw new System.InvalidOperationException("There is no products in repository!");
+            }
         }
 
         public string ReadAllClients()
         {
-            //This method prints out every client that exists in collecion, with all of its properties
-            string result = "";
-            foreach (Client client in Clients)
+            //This method returns string with info about every client that exists in collecion
+            if (Clients.ElementAt(0) != null)
             {
-                //Console.WriteLine("Client Name: {0} {1}, Street: {2}, City: {3}, Year of birth: {4}",
-                //    client.Name, client.Surname, client.Street, client.City, client.BirthYear);
-                result += "Client Name: " + client.Name + " " + client.Surname + ", Street: " + client.Street
-                    + ", City: " + client.City + ", Year of birth: " + client.BirthYear + "\n";
+                string result = "";
+                foreach (Client client in Clients)
+                {
+                    result += "Client Name: " + client.Name + " " + client.Surname + ", Street: " + client.Street
+                           + ", City: " + client.City + ", Year of birth: " + client.BirthYear + "\n";
+                }
+                return result;
             }
-            return result;
+            else
+            {
+                throw new System.InvalidOperationException("There is no clients in repository!");
+            }
         }
 
         public string ReadAllTransactions()
         {
-            string result = "";
-            foreach (Transaction transaction in Transactions)
+            //This method returns string with info about every transaction that exists in collecion
+            if (Transactions.ElementAt(0) != null)
             {
-                //Console.WriteLine("Client Name: {0} {1}, Product Name: {2}, Price: {3}, Date: {4}",
-                //    Clients[transaction.ClientID].Name, Clients[transaction.ClientID].Surname,
-                //    Products[transaction.ProductID].Name, Products[transaction.ProductID].Price, transaction.Date);
-                result += "Client Name: " + Clients[transaction.ClientID].Name + " "
-                    + Clients[transaction.ClientID].Surname + ", Product Name: " + Products[transaction.ProductID].Name
-                    + ", Price: " + Products[transaction.ProductID].Price + ", Date: " + transaction.Date + "\n";
+                string result = "";
+                foreach (Transaction transaction in Transactions)
+                {
+                    result += "Client Name: " + Clients[transaction.ClientID].Name + " "
+                           + Clients[transaction.ClientID].Surname + ", Product Name: " + Products[transaction.ProductID].Name
+                           + ", Price: " + Products[transaction.ProductID].Price + ", Date: " + transaction.Date + "\n";
+                }
+                return result;
             }
-            return result;
+            else
+            {
+                throw new System.InvalidOperationException("There is no transactions in repository!");
+            }
         }
 
         public string GetSpecificProduct(int ID)
         {
+            //This method returns string with info about single product. User must enter ID of product.
+            //In the case that user selected ID that not exists, method is throwing out a new InvalidOperationException 
             if (Products.ContainsKey(ID))
             {
                 string result = "";
                 result += "Product Type: " + Products.ElementAt(ID).Value + ", Name: " + Products[ID].Name
-                        + ", Price: " + Products[ID].Price + "\n";
-                //Console.WriteLine("Product Type: {0}, Name: {1}, Price: {2}",
-                //         Products.ElementAt(ID).Value, Products[ID].Name, Products[ID].Price);
+                       + ", Price: " + Products[ID].Price + "\n";
                 return result;
             }
             else
@@ -149,112 +167,215 @@ namespace MusicStore
 
         public string GetSpecificClient(int ID)
         {
-            string result = "";
-            result += "Client Name: " + Clients[ID].Name + " " + Clients[ID].Surname + ", Street: " + Clients[ID].Street + ", City: " + Clients[ID].City + ", Year of birth: " + Clients[ID].BirthYear + "\n";
-            //Console.WriteLine("Client Name: {0} {1}, Street: {2}, City: {3}, Year of birth: {4}",
-            //        Clients[ID].Name, Clients[ID].Surname, Clients[ID].Street, Clients[ID].City, Clients[ID].BirthYear);
-            return result;
+            //This method returns string with info about single client. User must enter ID of client.
+            //In the case that user selected ID that not exists, method is throwing out a new InvalidOperationException 
+            if (Clients.ElementAt(0) != null)
+            {
+                string result = "";
+                result += "Client Name: " + Clients[ID].Name + " " + Clients[ID].Surname + ", Street: "
+                       + Clients[ID].Street + ", City: " + Clients[ID].City + ", Year of birth: " + Clients[ID].BirthYear + "\n";
+                return result;
+            }
+            else
+            {
+                throw new System.InvalidOperationException("That client does not exists!");
+            }
         }
 
         public string GetSpecificTransaction(int ID)
         {
-            string result = "";
-            result += "Client Name: " + Clients[Transactions[ID].ClientID].Name + " "
-                    + Clients[Transactions[ID].ClientID].Surname + ", Product Name: " + Products[Transactions[ID].ProductID].Name + ", Price: " + Products[Transactions[ID].ProductID].Price + ", Date: " + Transactions[ID].Date + "\n";
-            return result;
-            //Console.WriteLine("Client Name: {0} {1}, Product Name: {2}, Price: {3}, Date: {4}",
-            //       Clients[Transactions[ID].ClientID].Name, Clients[Transactions[ID].ClientID].Surname,
-            //       Products[Transactions[ID].ProductID].Name, Products[Transactions[ID].ProductID].Price, Transactions[ID].Date);
+            //This method returns string with info about single transaction. User must enter ID of transaction.
+            //In the case that user selected ID that not exists, method is throwing out a new InvalidOperationException 
+            if (Transactions.ElementAt(0) != null)
+            {
+                string result = "";
+                result += "Client Name: " + Clients[Transactions[ID].ClientID].Name + " " + Clients[Transactions[ID].ClientID].Surname
+                       + ", Product Name: " + Products[Transactions[ID].ProductID].Name + ", Price: "
+                       + Products[Transactions[ID].ProductID].Price + ", Date: " + Transactions[ID].Date + "\n";
+                return result;
+            }
+            else
+            {
+                throw new System.InvalidOperationException("That transaction does not exists!");
+            }
         }
 
         #endregion
 
         #region Data Update Client Collection
-
+        //Methods used to update informations about client selected by user 
+        //In case that user selected client that not exists, method is throwing out InvalidOperationException
         public void UpdateClientName(int ClientID, string NewValue)
         {
-            Clients[ClientID].Name = NewValue;
+            if (Clients.ElementAt(ClientID) != null)
+            {
+                Clients[ClientID].Name = NewValue;
+            }
+            else
+            {
+                throw new InvalidOperationException("That client does not exists!");
+            }
         }
 
         public void UpdateClientSurname(int ClientID, string NewValue)
         {
-            Clients[ClientID].Surname = NewValue;
+            if (Clients.ElementAt(ClientID) != null)
+            {
+                Clients[ClientID].Surname = NewValue;
+            }
+            else
+            {
+                throw new InvalidOperationException("That client does not exists!");
+            }
         }
 
         public void UpdateClientStreet(int ClientID, string NewValue)
         {
-            Clients[ClientID].Street = NewValue;
+            if (Clients.ElementAt(ClientID) != null)
+            {
+                Clients[ClientID].Street = NewValue;
+            }
+            else
+            {
+                throw new InvalidOperationException("That client does not exists!");
+            }
         }
 
         public void UpdateClientCity(int ClientID, string NewValue)
         {
-            Clients[ClientID].City = NewValue;
+            if (Clients.ElementAt(ClientID) != null)
+            {
+                Clients[ClientID].City = NewValue;
+            }
+            else
+            {
+                throw new InvalidOperationException("That client does not exists!");
+            }
         }
 
         public void UpdateClientBirthYear(int ClientID, int NewValue)
         {
-            Clients[ClientID].BirthYear = NewValue;
+            if (Clients.ElementAt(ClientID) != null)
+            {
+                Clients[ClientID].BirthYear = NewValue;
+            }
+            else
+            {
+                throw new InvalidOperationException("That client does not exists!");
+            }
         }
 
         #endregion
 
         #region Data Update Product Collection
-
+        //Methods used to update informations about product selected by user 
+        //In case that user selected product that not exists, method is throwing out InvalidOperationException
         public void UpdateProductName(int ProductID, string NewValue)
         {
-            Products[ProductID].Name = NewValue;
+            if (Products.ContainsKey(ProductID))
+            {
+                Products[ProductID].Name = NewValue;
+            }
+            else
+            {
+                throw new System.InvalidOperationException("That product does not exists!");
+            }
         }
 
         public void UpdateProductPrice(int ProductID, double NewValue)
         {
-            Products[ProductID].Price = NewValue;
+            if (Products.ContainsKey(ProductID))
+            {
+                Products[ProductID].Price = NewValue;
+            }
+            else
+            {
+                throw new System.InvalidOperationException("That product does not exists!");
+            }
         }
-
         #endregion
 
         #region Object Delete Methods
-
+        //Methods used to delete specific object from collections
         public void DeleteClient(int ID)
         {
-            Clients.Remove(Clients.ElementAt(ID));
+            if (Clients.ElementAt(ID) != null)
+            {
+                Clients.Remove(Clients.ElementAt(ID));
+            }
+            else
+            {
+                throw new System.InvalidOperationException("That product does not exists!");
+            }
         }
 
         public void DeleteProduct(int ID)
         {
-            Products.Remove(ID);
+            if (Products.ContainsKey(ID))
+            {
+                Products.Remove(ID);
+            }
+            else
+            {
+                throw new System.InvalidOperationException("That product does not exists!");
+            }
         }
 
         public void DeleteTransaction(int ID)
         {
-            Transactions.RemoveAt(ID);
+            if (Transactions.ElementAt(ID) != null)
+            {
+                Transactions.RemoveAt(ID);
+            }
+            else
+            {
+                throw new System.InvalidOperationException("That transaction does not exists!");
+            }
         }
-
         #endregion
 
         #region Data Filters
-
-        public void FilterByClientAge(int RequiredAge)
+        //Methods used to filter objects in collections by some properties
+        //Every method returns string with objects info with applied filter
+        public string FilterByClientAge(int RequiredAge)
         {
-            foreach (Client client in Clients)
+            if (Clients.ElementAt(0) != null)
             {
-                if (DateTime.Now.Year - client.BirthYear >= RequiredAge)
+                string result = "";
+                for (int i = 0; i < Clients.Count; i++)
                 {
-                    //GetSpecificClient(client.GetClientID());
+                    if (DateTime.Now.Year - Clients.ElementAt(i).BirthYear >= RequiredAge)
+                    {
+                        result += GetSpecificClient(i);
+                    }
                 }
+                return result;
+            }
+            else
+            {
+                throw new System.InvalidOperationException("There is no clients in repository!");
             }
         }
 
-        public void FilterByGreaterProductPrice(double RequiredPrice)
+        public string FilterByGreaterProductPrice(double RequiredPrice)
         {
-            foreach (KeyValuePair<int, Product> product in Products)
+            if (Products.ContainsKey(0))
             {
-                if (product.Value.Price > RequiredPrice)
+                string result = "";
+                foreach (KeyValuePair<int, Product> product in Products)
                 {
-                    GetSpecificProduct(product.Key);
+                    if (product.Value.Price > RequiredPrice)
+                    {
+                        result += GetSpecificProduct(product.Key);
+                    }
                 }
+                return result;
+            }
+            else
+            {
+                throw new System.InvalidOperationException("That product does not exists!");
             }
         }
-
         #endregion
     }
 }
