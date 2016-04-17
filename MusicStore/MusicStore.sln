@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataRepositoryReadUnitTest"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataRepositoryDeleteUnitTest", "DataRepositoryDeleteTest\DataRepositoryDeleteUnitTest.csproj", "{F79E6DDC-30E4-47BA-A53A-02B439B1F66B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataRepositoryUpdateUnitTest", "DataRepositoryUpdateTest\DataRepositoryUpdateUnitTest.csproj", "{B48CA297-27E8-49AE-AB3C-931FE9A9B3FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{18001CB3-D489-4278-BF8B-9BE597034EF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,8 +43,18 @@ Global
 		{F79E6DDC-30E4-47BA-A53A-02B439B1F66B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F79E6DDC-30E4-47BA-A53A-02B439B1F66B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F79E6DDC-30E4-47BA-A53A-02B439B1F66B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B48CA297-27E8-49AE-AB3C-931FE9A9B3FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B48CA297-27E8-49AE-AB3C-931FE9A9B3FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B48CA297-27E8-49AE-AB3C-931FE9A9B3FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B48CA297-27E8-49AE-AB3C-931FE9A9B3FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{90B3D6E7-72AD-4836-8F41-F40C670C8721} = {18001CB3-D489-4278-BF8B-9BE597034EF2}
+		{076A6C30-5CD8-4E01-8D46-D6BB7E670E4F} = {18001CB3-D489-4278-BF8B-9BE597034EF2}
+		{F79E6DDC-30E4-47BA-A53A-02B439B1F66B} = {18001CB3-D489-4278-BF8B-9BE597034EF2}
+		{B48CA297-27E8-49AE-AB3C-931FE9A9B3FC} = {18001CB3-D489-4278-BF8B-9BE597034EF2}
 	EndGlobalSection
 EndGlobal

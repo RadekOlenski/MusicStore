@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MusicStore;
 
-namespace DataRepositoryTests
+namespace DataRepositoryDeleteUnitTest
 {
     [TestClass]
     public class DataDeleteTests

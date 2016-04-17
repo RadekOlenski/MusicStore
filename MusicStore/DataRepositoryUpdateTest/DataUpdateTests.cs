@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MusicStore;
 
-namespace DataRepositoryTests
+namespace DataRepositoryUpdateUnitTest
 {
-   
+
     [TestClass]
     public class DataUpdateTests
     {
