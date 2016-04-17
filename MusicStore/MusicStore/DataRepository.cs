@@ -58,7 +58,7 @@ namespace MusicStore
         {
             //Function adds new Product to the Products Dictionary, according to the Type of product selected by user 
             //Selected type is checking with ProductType enumerable type
-            //int ID = Product.GeneralProductID;
+
             switch (Type)
             {
                 case ProductType.Guitar:
@@ -74,35 +74,18 @@ namespace MusicStore
                     Products.Add(Product.GenerateProductID(), new LiveAlbum(Name, Price));
                     break;
             }
-            //ID++;
-            //if(!Products.ContainsKey(ID))
-            //{
-            //    throw new NullReferenceException("Product was not created!");
-            //}
         }
 
         public void CreateClient(string Name, string Surname, string Street, string City, int BirthYear)
         {
             //This method add new Client to the Clients List, with all object properties given by user
-            //int ID = Clients.Count;
             Clients.Add(new Client(Name, Surname, Street, City, BirthYear));
-            //    ID++;
-            //if (Clients.ElementAt(ID) == null)
-            //{
-            //    throw new NullReferenceException("Client was not created!");
-            //}
         }
 
         public void CreateTransaction(int ClientID, int ProductID, string Date)
         {
             //This method add new Transaction to the Transactions Observable Collection, with all object properties given by user
-            //int ID = Transactions.Count;
             Transactions.Add(new Transaction(ClientID, ProductID, Date));
-            //ID++;
-            //if (Transactions.ElementAt(ID) == null)
-            //{
-            //    throw new NullReferenceException("Transaction was not created!");
-            //}
         }
         #endregion
 
@@ -384,6 +367,24 @@ namespace MusicStore
             {
                 throw new System.InvalidOperationException("That product does not exists!");
             }
+        }
+        #endregion
+
+        #region Count Objects In Collections
+
+        public int CountClients()
+        {
+            return Clients.Count;
+        }
+
+        public int CountProducts()
+        {
+            return Products.Count;
+        }
+
+        public int CountTransactions()
+        {
+            return Transactions.Count;
         }
         #endregion
     }
