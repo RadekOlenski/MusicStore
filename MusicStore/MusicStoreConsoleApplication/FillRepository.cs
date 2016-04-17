@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MusicStore.ConsoleApplication
 {
-    class FillRepository : IFillRepository
+    public class FillRepository : IFillRepository
     {
         public void CreateClients(List<Client> Clients)
         {

@@ -17,12 +17,6 @@ namespace DataRepositoryReadUnitTest
             sut = new DataRepository();
         }
 
-        [TestCleanup]
-        public void clean()
-        {
-            //Object cleanup
-        }
-
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void ReadAllProductsFail()
