@@ -140,7 +140,7 @@ namespace MusicStore
             }
             else
             {
-                throw new System.InvalidOperationException("There is no clients in repository!");
+                throw new System.ArgumentOutOfRangeException("There is no clients in repository!");
             }
         }
 
@@ -160,7 +160,7 @@ namespace MusicStore
             }
             else
             {
-                throw new System.InvalidOperationException("There is no transactions in repository!");
+                throw new System.ArgumentOutOfRangeException("There is no transactions in repository!");
             }
         }
 
@@ -181,21 +181,21 @@ namespace MusicStore
         public string GetSpecificClient(int ID)
         {
             //This method returns string with info about single client. User must enter ID of client.
-            //In the case that user selected ID that not exists, method is throwing out a new InvalidOperationException 
+            //In the case that user selected ID that not exists, method is throwing out a new ArgumentOutOfRangeException
             if (Clients.ElementAt(ID) != null)
             {
                 return Clients.ElementAt(ID).ToString();
             }
             else
             {
-                throw new System.InvalidOperationException("That client does not exists!");
+                throw new System.ArgumentOutOfRangeException("That client does not exists!");
             }
         }
 
         public string GetSpecificTransaction(int ID)
         {
             //This method returns string with info about single transaction. User must enter ID of transaction.
-            //In the case that user selected ID that not exists, method is throwing out a new InvalidOperationException 
+            //In the case that user selected ID that not exists, method is throwing out a new ArgumentOutOfRangeException
             if (Transactions.ElementAt(ID) != null)
             {
                 return Clients[Transactions[ID].ClientID].ToString() + "\n"
@@ -204,7 +204,7 @@ namespace MusicStore
             }
             else
             {
-                throw new System.InvalidOperationException("That transaction does not exists!");
+                throw new System.ArgumentOutOfRangeException("That transaction does not exists!");
             }
         }
 
