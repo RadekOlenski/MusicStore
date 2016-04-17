@@ -16,7 +16,10 @@ namespace MusicStore.ConsoleApplication
             foreach ( string line in FileToString("clients.txt"))
             {
                 string[] parts = line.Split(';');
-                Clients.Add(new Client(parts[0], parts[1], parts[2], parts[3], Int32.Parse(parts[4])));
+                if (parts.Length == 5)
+                {
+                    Clients.Add(new Client(parts[0], parts[1], parts[2], parts[3], Int32.Parse(parts[4])));
+                }
             }
         }
 
@@ -25,7 +28,10 @@ namespace MusicStore.ConsoleApplication
             foreach (string line in FileToString("products.txt"))
             {
                 string[] parts = line.Split(';');
-                Products.Add( Product.GenerateProductID(), new Product(parts[0], Int32.Parse(parts[2])));
+                if (parts.Length == 2)
+                {
+                    Products.Add(Product.GenerateProductID(), new Product(parts[0], Int32.Parse(parts[1]))); 
+                }
             }
         }
 
@@ -34,7 +40,10 @@ namespace MusicStore.ConsoleApplication
             foreach (string line in FileToString("transactions.txt"))
             {
                 string[] parts = line.Split(';');
-                Transactions.Add(new Transaction(Int32.Parse(parts[0]), Int32.Parse(parts[1]), parts[2] ));
+                if (parts.Length == 3)
+                {
+                    Transactions.Add(new Transaction(Int32.Parse(parts[0]), Int32.Parse(parts[1]), parts[2] ));
+                }
             }
         }
 
