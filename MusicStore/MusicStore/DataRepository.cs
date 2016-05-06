@@ -76,7 +76,7 @@ namespace MusicStore
 
         #region Data Creation Methods
         //Methods that can be used to create new object of any type: product, client, transaction
-        public void CreateProduct(ProductType Type, string Name, double Price)
+        public void CreateProduct(ProductType Type, string Name, double Price, uint Year = 0, string Band = "None")
         {
             //Function adds new Product to the Products Dictionary, according to the Type of product selected by user 
             //Selected type is checking with ProductType enumerable type
@@ -90,10 +90,10 @@ namespace MusicStore
                     Products.Add(Product.GenerateProductID(), new Keyboard(Name, Price));
                     break;
                 case ProductType.Longplay:
-                    Products.Add(Product.GenerateProductID(), new LongPlay(Name, Price));
+                    Products.Add(Product.GenerateProductID(), new LongPlay(Name, Price, Year, Band));
                     break;
                 case ProductType.LiveAlbum:
-                    Products.Add(Product.GenerateProductID(), new LiveAlbum(Name, Price));
+                    Products.Add(Product.GenerateProductID(), new LiveAlbum(Name, Price, Year, Band));
                     break;
             }
         }

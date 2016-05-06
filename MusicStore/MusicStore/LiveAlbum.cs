@@ -10,9 +10,8 @@ namespace MusicStore
 {
     public class LiveAlbum : MusicAlbum
     {
-        public LiveAlbum(string Name, double Price) : base(Name, Price)
+        public LiveAlbum(string Name, double Price, uint Year, string Band) : base(Name, Price, Year, Band)
         {
-            
 
         }
     }

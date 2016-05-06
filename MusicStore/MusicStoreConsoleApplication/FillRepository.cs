@@ -22,8 +22,8 @@ namespace MusicStore.ConsoleApplication
         {
             Products.Add(Product.GenerateProductID(), new Guitar("RX100", 1027.45));
             Products.Add(Product.GenerateProductID(), new Keyboard("Kronos", 15499));
-            Products.Add(Product.GenerateProductID(), new LongPlay("The Wall", 54.99));
-            Products.Add(Product.GenerateProductID(), new LiveAlbum("Live at Rome", 77.21));
+            Products.Add(Product.GenerateProductID(), new LongPlay("The Wall", 54.99, 1980, "Pink Floyd"));
+            Products.Add(Product.GenerateProductID(), new LiveAlbum("Live at Rome", 77.21, 2000, "2Cellos"));
         }
 
         public void CreateTransactions(ObservableCollection<Transaction> Transactions)

@@ -1,5 +1,6 @@
 ﻿#region includes
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,11 +35,12 @@ namespace MusicStore
         }
         #endregion
 
+        #region Overrides
         public override string ToString()
         {
             return "Transaction Date: " + this.Date;
-        }
-
-
+        } 
+        #endregion
+       
     }
 }

@@ -10,7 +10,7 @@ namespace MusicStore
 {
     public class LongPlay : MusicAlbum
     {
-        public LongPlay(string Name, double Price) : base(Name, Price)
+        public LongPlay(string Name, double Price, uint Year, string Band) : base(Name, Price, Year,Band)
         {
 
         }

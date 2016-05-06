@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStore", "MusicStore\MusicStore.csproj", "{8EEFC4B1-0432-456E-B443-FE88692DB68E}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FillDataRepositoryTest", "FillDataRepositoryTest\FillDataRepositoryTest.csproj", "{568CA7B9-7518-45DC-B9FA-E507BEB129D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjectionUnitTest", "DependencyInjectionUnitTest\DependencyInjectionUnitTest.csproj", "{FBD43CE0-538B-459D-B515-F4C003871D5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqQueriesTest", "LinqQueriesTest\LinqQueriesTest.csproj", "{B59485F6-BE1E-4357-8FB1-BD0D3612AF56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{FBD43CE0-538B-459D-B515-F4C003871D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBD43CE0-538B-459D-B515-F4C003871D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBD43CE0-538B-459D-B515-F4C003871D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B59485F6-BE1E-4357-8FB1-BD0D3612AF56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B59485F6-BE1E-4357-8FB1-BD0D3612AF56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B59485F6-BE1E-4357-8FB1-BD0D3612AF56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B59485F6-BE1E-4357-8FB1-BD0D3612AF56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,5 +76,6 @@ Global
 		{0A4A1CF4-CF0D-4FB8-9FF0-4A17EAA1FE37} = {18001CB3-D489-4278-BF8B-9BE597034EF2}
 		{568CA7B9-7518-45DC-B9FA-E507BEB129D8} = {18001CB3-D489-4278-BF8B-9BE597034EF2}
 		{FBD43CE0-538B-459D-B515-F4C003871D5B} = {18001CB3-D489-4278-BF8B-9BE597034EF2}
+		{B59485F6-BE1E-4357-8FB1-BD0D3612AF56} = {18001CB3-D489-4278-BF8B-9BE597034EF2}
 	EndGlobalSection
 EndGlobal
