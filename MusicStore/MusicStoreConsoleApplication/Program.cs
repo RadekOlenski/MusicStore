@@ -32,7 +32,7 @@ namespace MusicStore.ConsoleApplication
 
             try
             {
-                _DataRepository.GetSpecificProduct(10);
+                _DataRepository.GetSpecificProductToString(10);
             }
             catch (InvalidOperationException e)
             {

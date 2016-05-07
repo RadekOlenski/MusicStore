@@ -30,7 +30,7 @@ namespace DataRepositoryDeleteUnitTest
         public void DeleteClient()
         {
             sut.DeleteClient(0);
-            sut.GetSpecificClient(0);
+            sut.GetSpecificClientToString(0);
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@ namespace DataRepositoryDeleteUnitTest
         public void DeleteProduct()
         {
             sut.DeleteProduct(1);
-            sut.GetSpecificProduct(1);
+            sut.GetSpecificProductToString(1);
         }
 
         [TestMethod]

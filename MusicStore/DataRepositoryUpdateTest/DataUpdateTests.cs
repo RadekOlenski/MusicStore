@@ -38,49 +38,49 @@ namespace DataRepositoryUpdateUnitTest
         public void UpdateClientName()
         {
             sut.UpdateClientName(0, "Krystian");
-            Assert.IsTrue(sut.GetSpecificClient(0).Contains("Krystian"));
+            Assert.IsTrue(sut.GetSpecificClientToString(0).Contains("Krystian"));
         }
 
         [TestMethod]
         public void UpdateClientSurname()
         {
             sut.UpdateClientSurname(1, "Smith");
-            Assert.IsTrue(sut.GetSpecificClient(1).Contains("Smith"));
+            Assert.IsTrue(sut.GetSpecificClientToString(1).Contains("Smith"));
         }
 
         [TestMethod]
         public void UpdateClientStreet()
         {
             sut.UpdateClientStreet(0, "Piotrkowska 23");
-            Assert.IsTrue(sut.GetSpecificClient(0).Contains("Piotrkowska 23"));
+            Assert.IsTrue(sut.GetSpecificClientToString(0).Contains("Piotrkowska 23"));
         }
 
         [TestMethod]
         public void UpdateClientCity()
         {
             sut.UpdateClientCity(1, "Washington DC");
-            Assert.IsTrue(sut.GetSpecificClient(1).Contains("Washington DC"));
+            Assert.IsTrue(sut.GetSpecificClientToString(1).Contains("Washington DC"));
         }
 
         [TestMethod]
         public void UpdateClientBirthYear()
         {
             sut.UpdateClientBirthYear(0, 2015);
-            Assert.IsTrue(sut.GetSpecificClient(0).Contains("2015"));
+            Assert.IsTrue(sut.GetSpecificClientToString(0).Contains("2015"));
         }
 
         [TestMethod]
         public void UpdateProductName()
         {
             sut.UpdateProductName(0, "Ibanez 23475H");
-            Assert.IsTrue(sut.GetSpecificProduct(0).Contains("Ibanez 23475H"));
+            Assert.IsTrue(sut.GetSpecificProductToString(0).Contains("Ibanez 23475H"));
         }
 
         [TestMethod]
         public void UpdateProductPrice()
         {
             sut.UpdateProductPrice(1, 349.90);
-            Assert.IsTrue(sut.GetSpecificProduct(1).Contains("349,9"));
+            Assert.IsTrue(sut.GetSpecificProductToString(1).Contains("349,9"));
         }
     }
 }

@@ -42,14 +42,14 @@ namespace DataRepositoryReadUnitTest
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void GetSpecificClientFail()
         {
-            sut.GetSpecificClient(0);
+            sut.GetSpecificClientToString(0);
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void GetSpecificProductFail()
         {
-            sut.GetSpecificProduct(0);
+            sut.GetSpecificProductToString(0);
         }
 
         [TestMethod]

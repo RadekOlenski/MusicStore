@@ -11,7 +11,7 @@ namespace MusicStore
     public class Client
     {
         #region Constructor
-        public Client(string Name, string Surname, string Street, string City, int BirthYear)
+        public Client(string Name = "None", string Surname = "None" , string Street = "None", string City = "None" , int BirthYear = 1900)
         {
             GenerateClientID();
             this.Name = Name;

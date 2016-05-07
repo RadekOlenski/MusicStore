@@ -65,6 +65,7 @@
     <Compile Include="DataLambdaFilter.cs" />
     <Compile Include="DataLinqFilter.cs" />
     <Compile Include="DataRepository.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Guitar.cs" />
     <Compile Include="IFillRepository.cs" />
     <Compile Include="Instrument.cs" />

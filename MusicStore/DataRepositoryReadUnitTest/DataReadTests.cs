@@ -74,7 +74,7 @@ namespace DataRepositoryReadUnitTest
         public void GetSpecificClient()
         {
             string expectedString = "Client Name: Adam Nowak, Street: Drzewna, City: Lodz, Year of birth: 1990";
-            string actualString = sut.GetSpecificClient(0);
+            string actualString = sut.GetSpecificClientToString(0);
             Assert.AreEqual(expectedString, actualString);
         }
 
@@ -82,7 +82,7 @@ namespace DataRepositoryReadUnitTest
         public void GetSpecificProduct()
         {
             string expectedString = "[0, Product Type: MusicStore.Keyboard, Name: Qwerty, Price: 20000]";
-            string actualString = sut.GetSpecificProduct(0);
+            string actualString = sut.GetSpecificProductToString(0);
             Assert.AreEqual(expectedString, actualString);
         }
 

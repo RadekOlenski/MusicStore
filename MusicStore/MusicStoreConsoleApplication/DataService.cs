@@ -70,7 +70,7 @@ namespace MusicStore.ConsoleApplication
 
         public string GetSpecificClient(int ID)
         {
-            return DataRepository.GetSpecificClient(ID);
+            return DataRepository.GetSpecificClientToString(ID);
         }
 
         #endregion

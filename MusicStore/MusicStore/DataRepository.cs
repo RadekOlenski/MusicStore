@@ -98,7 +98,7 @@ namespace MusicStore
             }
         }
 
-        public void CreateClient(string Name, string Surname, string Street, string City, int BirthYear)
+        public void CreateClient(string Name = "None", string Surname = "None", string Street = "None", string City = "None", int BirthYear = 1900)
         {
             //This method add new Client to the Clients List, with all object properties given by user
             Clients.Add(new Client(Name, Surname, Street, City, BirthYear));
@@ -176,7 +176,17 @@ namespace MusicStore
             return Transactions;
         }
 
-        public string GetSpecificProduct(int ID)
+        public List<Client> GetAllClients()
+        {
+            return Clients;
+        }
+
+        public Dictionary<int,Product> GetAllProducts()
+        {
+            return Products;
+        }
+
+        public string GetSpecificProductToString(int ID)
         {
             //This method returns string with info about single product. User must enter ID of product.
             //In the case that user selected ID that not exists, method is throwing out a new InvalidOperationException 
@@ -190,13 +200,37 @@ namespace MusicStore
             }
         }
 
-        public string GetSpecificClient(int ID)
+        public Product GetSpecificProduct(int ID)
+        {
+            if (Products.ContainsKey(ID))
+            {
+                return Products.ElementAt(ID).Value;
+            }
+            else
+            {
+                throw new System.InvalidOperationException("That product does not exists!");
+            }
+        }
+
+        public string GetSpecificClientToString(int ID)
         {
             //This method returns string with info about single client. User must enter ID of client.
             //In the case that user selected ID that not exists, method is throwing out a new ArgumentOutOfRangeException
             if (Clients.ElementAt(ID) != null)
             {
                 return Clients.ElementAt(ID).ToString();
+            }
+            else
+            {
+                throw new System.ArgumentOutOfRangeException("That client does not exists!");
+            }
+        }
+
+        public Client GetSpecificClient(int ID)
+        {
+            if (Clients.ElementAt(ID) != null)
+            {
+                return Clients.ElementAt(ID);
             }
             else
             {
@@ -367,7 +401,7 @@ namespace MusicStore
                 {
                     if (DateTime.Now.Year - Clients.ElementAt(i).BirthYear >= RequiredAge)
                     {
-                        result += GetSpecificClient(i) + "\n";
+                        result += GetSpecificClientToString(i) + "\n";
                     }
                 }
                 return result;
@@ -387,7 +421,7 @@ namespace MusicStore
                 {
                     if (product.Value.Price > RequiredPrice)
                     {
-                        result += GetSpecificProduct(product.Key) + "\n";
+                        result += GetSpecificProductToString(product.Key) + "\n";
                     }
                 }
                 return result;
