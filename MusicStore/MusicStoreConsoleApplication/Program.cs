@@ -11,7 +11,7 @@ namespace MusicStore.ConsoleApplication
         static void Main(string[] args)
         {
             DataRepository _DataRepository = new DataRepository();
-            _DataRepository.CreateProduct(ProductType.Keyboard, "Dupa", 100);
+            _DataRepository.CreateProduct(ProductType.Keyboard, "Keyboard", 100);
             try
             {
                 _DataRepository.ReadAllProducts();

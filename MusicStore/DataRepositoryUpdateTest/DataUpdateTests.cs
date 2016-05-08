@@ -80,7 +80,7 @@ namespace DataRepositoryUpdateUnitTest
         public void UpdateProductPrice()
         {
             sut.UpdateProductPrice(1, 349.90);
-            Assert.IsTrue(sut.GetSpecificProductToString(1).Contains("349,9"));
+            Assert.IsTrue(sut.GetSpecificProductToString(1).Contains("349.9"));
         }
     }
 }

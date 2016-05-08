@@ -60,11 +60,8 @@ namespace MusicStore
                 simpleClassItems.Add(new SimpleClass(item.Name, (int)item.Year));
             }
             return simpleClassItems;
-        } 
-        #endregion     
-
-
-
-
+        }
+        #endregion
+        
     }
 }

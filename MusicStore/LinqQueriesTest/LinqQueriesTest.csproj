@@ -52,12 +52,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AdventureWorksLinqTest.cs" />
     <Compile Include="LambdaTest.cs" />
     <Compile Include="LinqQueriesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ExtensionMethodsTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AdventureWorksDatabase\AdventureWorksDatabase.csproj">
+      <Project>{75cf3604-cd5c-4031-bd53-3abc7a84bca1}</Project>
+      <Name>AdventureWorksDatabase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MusicStore\MusicStore.csproj">
       <Project>{8eefc4b1-0432-456e-b443-fe88692db68e}</Project>
       <Name>MusicStore</Name>
