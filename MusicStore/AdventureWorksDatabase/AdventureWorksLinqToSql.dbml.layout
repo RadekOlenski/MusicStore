@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.125" name="AdventureWorksLinqToSql">
+  <DataContextMoniker Name="/AdventureWorksLinqToSqlDataContext" />
+  <nestedChildShapes>
+    <classShape Id="aae55f41-df4e-4b91-870f-04d08753b5eb" absoluteBounds="3.375, 4.25, 2, 5.6169254557291657">
+      <DataClassMoniker Name="/AdventureWorksLinqToSqlDataContext/Product" />
+      <nestedChildShapes>
+        <elementListCompartment Id="92031a77-60bf-49ef-9363-ee828047b581" absoluteBounds="3.3899999999999997, 4.71, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="422dd1b9-c4c5-4a6e-b424-34517f698106" absoluteBounds="1, 1.25, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/AdventureWorksLinqToSqlDataContext/Vendor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b922f23f-ee11-4dbe-8f9f-c5d1f8a9c8e3" absoluteBounds="1.0149999999999997, 1.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="68140d48-3301-4b65-aac7-7ef535650052" absoluteBounds="4.75, 0.5, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/AdventureWorksLinqToSqlDataContext/ProductVendor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aba025ec-2a98-4f3d-a5ad-19cfff57ae70" absoluteBounds="4.765, 0.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.0625 : 4.25); (5.0625 : 3.42470540364583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AdventureWorksLinqToSqlDataContext/Product/Product_ProductVendor" />
+      <nodes>
+        <classShapeMoniker Id="aae55f41-df4e-4b91-870f-04d08753b5eb" />
+        <classShapeMoniker Id="68140d48-3301-4b65-aac7-7ef535650052" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3 : 2.33735270182292); (4.75 : 2.33735270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AdventureWorksLinqToSqlDataContext/Vendor/Vendor_ProductVendor" />
+      <nodes>
+        <classShapeMoniker Id="422dd1b9-c4c5-4a6e-b424-34517f698106" />
+        <classShapeMoniker Id="68140d48-3301-4b65-aac7-7ef535650052" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d2b1b025-7047-4834-a251-c3a770dc0327" absoluteBounds="0.5, 4.375, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/AdventureWorksLinqToSqlDataContext/ProductReview" />
+      <nestedChildShapes>
+        <elementListCompartment Id="54729b7c-c7bf-49b2-be80-b63aeb0aeba4" absoluteBounds="0.51500000000000012, 4.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.375 : 5.54890055338542); (2.5 : 5.54890055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AdventureWorksLinqToSqlDataContext/Product/Product_ProductReview" />
+      <nodes>
+        <classShapeMoniker Id="aae55f41-df4e-4b91-870f-04d08753b5eb" />
+        <classShapeMoniker Id="d2b1b025-7047-4834-a251-c3a770dc0327" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e8c6d78f-70f8-4107-b0fb-092d5878f048" absoluteBounds="6.25, 4.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/AdventureWorksLinqToSqlDataContext/ProductCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="70dc73ce-00b5-48ca-b020-a2a5ae0a68c6" absoluteBounds="6.2650000000000006, 4.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9bdcb673-5ae5-4135-b69e-cb5fbb906dfa" absoluteBounds="6.375, 7.375, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/AdventureWorksLinqToSqlDataContext/ProductSubcategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c343a730-0769-452c-89c8-6c3352046d8a" absoluteBounds="6.39, 7.8350000000000009, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.375 : 8.26044840494792); (5.375 : 8.26044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AdventureWorksLinqToSqlDataContext/ProductSubcategory/ProductSubcategory_Product" />
+      <nodes>
+        <classShapeMoniker Id="9bdcb673-5ae5-4135-b69e-cb5fbb906dfa" />
+        <classShapeMoniker Id="aae55f41-df4e-4b91-870f-04d08753b5eb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.3125 : 6.07859537760417); (7.3125 : 7.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/AdventureWorksLinqToSqlDataContext/ProductCategory/ProductCategory_ProductSubcategory" />
+      <nodes>
+        <classShapeMoniker Id="e8c6d78f-70f8-4107-b0fb-092d5878f048" />
+        <classShapeMoniker Id="9bdcb673-5ae5-4135-b69e-cb5fbb906dfa" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
