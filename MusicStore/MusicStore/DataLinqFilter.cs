@@ -52,7 +52,16 @@ namespace MusicStore
         }
         #endregion
 
-        //TODO subsection f)
+        #region f)
+        public static int[] getClientsIDWithTransactions(List<Transaction> transactions)
+        {
+            var clientIDs = transactions.GroupBy(x => x.ClientID)
+                                         .Where(g => g.Count() > 1)
+                                         .Select(g => g.Key)
+                                         .ToArray();
+            return clientIDs;
+        } 
+        #endregion
 
         #region subsection g)
         public static List<Transaction> GetDistinctTransactions(List<Transaction> list)
@@ -62,7 +71,7 @@ namespace MusicStore
         }
         #endregion
 
-        #region subsection h)        //upgrade?
+        #region subsection h)
         public static List<SimpleClass> GetSimpleClassesWithSpecifiedIssueYear(List<MusicAlbum> list, int minYear, int maxYear)
         {
             List<SimpleClass> simpleClassItems = new List<SimpleClass>();

@@ -44,7 +44,16 @@ namespace MusicStore
         }
         #endregion
 
-        // TODO F
+        #region f)
+        public static int[] getClientsIDWithTransactions(List<Transaction> transactions)
+        {
+            var clientIDs = transactions.GroupBy(x => x.ClientID)
+                                         .Where(g => g.Count() > 1)
+                                         .Select(g => g.Key)
+                                         .ToArray();
+            return clientIDs;
+        }
+        #endregion
 
         #region subsection g)
         public static List<Transaction> GetDistinctTransactions(List<Transaction> list)
