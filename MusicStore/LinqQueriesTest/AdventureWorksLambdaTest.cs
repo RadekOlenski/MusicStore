@@ -50,7 +50,7 @@ namespace LinqQueriesTest
                          select category).Take(1);
             decimal actual = AdventureWorksLambda.getTotalStandardCostByCategory(query.First());
             Assert.AreEqual((decimal)92092.8230, actual);
-             
+
             decimal expected = AdventureWorksLinq.getTotalStandardCostByCategory(query.First());
             Assert.AreEqual(expected, actual);
         }

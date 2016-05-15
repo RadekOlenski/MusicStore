@@ -32,6 +32,19 @@ namespace MusicStore
         #endregion
 
         //TODO subsection d)
+        public static void CompareLists(List<Product> list1, List<Product> list2)
+        {
+            //list1.Aggregate()
+            foreach (var item in list1)
+            {
+
+            }
+            for (int i = 0; i < list1.Count; i++)
+            {
+                //if (list2[i] != null && list2[i] - list1[i] > 0)
+            }
+            
+        }
 
         #region subsection e)
         public static MusicAlbum getMaxElement(List<MusicAlbum> list)
@@ -40,7 +53,16 @@ namespace MusicStore
         }
         #endregion
 
-        //TODO subsection f)
+        #region f)
+        public static int[] getClientsIDWithTransactions(List<Transaction> transactions)
+        {
+            var clientIDs = transactions.GroupBy(x => x.ClientID)
+                                         .Where(g => g.Count() > 1)
+                                         .Select(g => g.Key)
+                                         .ToArray();
+            return clientIDs;
+        } 
+        #endregion
 
         #region subsection g)
         public static List<Transaction> GetDistinctTransactions(List<Transaction> list)
@@ -50,7 +72,7 @@ namespace MusicStore
         }
         #endregion
 
-        #region subsection h)        //upgrade?
+        #region subsection h)
         public static List<SimpleClass> GetSimpleClassesWithSpecifiedIssueYear(List<MusicAlbum> list, int minYear, int maxYear)
         {
             List<SimpleClass> simpleClassItems = new List<SimpleClass>();

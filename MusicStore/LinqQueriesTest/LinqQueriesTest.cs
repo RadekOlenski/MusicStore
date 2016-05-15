@@ -96,6 +96,22 @@ namespace LinqQueriesTest
         }
         #endregion
 
+        #region f)
+        [TestMethod]
+        public void GetClientsWithTransactionsTest()
+        {
+            List<Transaction> tran = new List<Transaction>
+            {
+                new Transaction(2, 5, "wrzesien"),
+                new Transaction(2, 57, "marzec"),
+                new Transaction(4, 51, "luty"),
+                new Transaction(4, 52, "kwiecien"),
+                new Transaction(6, 3, "maj")
+            };
+           Assert.AreEqual(2,DataLinqFilter.getClientsIDWithTransactions(tran).Count());
+        }
+        #endregion
+
         #region g)
         [TestMethod]
         public void GetDistinctTransactionsLinq()
@@ -129,7 +145,7 @@ namespace LinqQueriesTest
             {
                 Assert.IsInstanceOfType(item, typeof(SimpleClass));
             }
-        } 
+        }
         #endregion
 
     }
