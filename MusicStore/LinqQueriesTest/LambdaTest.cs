@@ -80,6 +80,32 @@ namespace LinqQueriesTest
         }
         #endregion
 
+        #region d)
+        [TestMethod]
+        public void CompareListsLambdaTest()
+        {
+            List<Product> products = new List<Product>
+            {
+                new Product("CommonName",201),
+                new Product("CommonName",202),
+                new Product("VeryCommonName",202),
+                new Product("SpecialName",203),
+                new Product("SpecialName",203),
+            };
+
+            List<Product> products2 = new List<Product>
+            {
+                new Product("AommonName",201),
+                new Product("DmonName",202),
+                new Product("VeryCommonName",202),
+                new Product("USpecialName",203),
+                new Product("POSpecialName",203),
+            };
+
+            DataLinqFilter.CompareLists(products, products2);
+        }
+        #endregion
+
         #region e)
         [TestMethod]
         public void GetMaxElementLambdaTest()

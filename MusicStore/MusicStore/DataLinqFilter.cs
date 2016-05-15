@@ -32,7 +32,19 @@ namespace MusicStore
         #endregion
 
         //TODO subsection d)
+        public static void CompareLists(List<Product> list1, List<Product> list2)
+        {
+            var query = from p1 in list1
+                        from p2 in list2
+                        where p1.Name.CompareTo(p2.Name) < 0
+                        select new { Object1 = p1.Name, Object2 = p2.Name };
 
+            foreach (var item in query)
+            {
+                Console.WriteLine("obiekt 1: {0}, obiekt 2: {1}", item.Object1, item.Object2);
+            }
+
+        }
         #region subsection e)
         public static MusicAlbum getMaxElement(List<MusicAlbum> list)
         {
