@@ -20,6 +20,11 @@ namespace MusicStore
             this.City = City;
             this.BirthYear = BirthYear;
         }
+
+        public Client()
+        {
+
+        }
         #endregion
        
         #region Variables

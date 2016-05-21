@@ -12,7 +12,13 @@ namespace MusicStore
     {
         public Keyboard(string Name, double Price) : base(Name, Price)
         {
+            
 
+        }
+
+        public Keyboard()
+        {
+            
         }
     }
 }

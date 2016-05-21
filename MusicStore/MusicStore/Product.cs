@@ -17,6 +17,12 @@ namespace MusicStore
             this.Price = Price;
         }
 
+        public Product()
+        {
+            this.Name = "default";
+            this.Price = 0;
+        }
+
         static Product()
         {
             _generalProductID = 0;

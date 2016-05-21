@@ -19,6 +19,11 @@ namespace MusicStore
             this.ProductID = ProductID;
             this.Date = Date;
         }
+
+        public Transaction()
+        {
+
+        }
         #endregion
 
         #region Properties

@@ -14,5 +14,8 @@ namespace MusicStore
         {
 
         }
+
+        public LiveAlbum() { }
+
     }
 }

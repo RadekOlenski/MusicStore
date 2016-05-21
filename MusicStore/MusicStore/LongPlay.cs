@@ -14,5 +14,10 @@ namespace MusicStore
         {
 
         }
+
+        public LongPlay()
+        {
+
+        }
     }
 }

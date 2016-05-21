@@ -14,5 +14,11 @@ namespace MusicStore
         {
 
         }
+
+        public Guitar()
+        {
+
+        }
+        
     }
 }

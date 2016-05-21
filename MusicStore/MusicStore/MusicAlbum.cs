@@ -18,5 +18,10 @@ namespace MusicStore
             this.Year = Year;
             this.Band = Band;
         }
+
+        public MusicAlbum()
+        {
+
+        }
     }
 }

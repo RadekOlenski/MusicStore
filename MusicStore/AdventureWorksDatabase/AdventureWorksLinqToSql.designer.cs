@@ -5,7 +5,7 @@
 //     Runtime Version:4.0.30319.42000
 //
 //     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
+//     the code is regenerated.ergb
 // </auto-generated>
 //------------------------------------------------------------------------------
 
