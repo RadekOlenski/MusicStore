@@ -19,9 +19,9 @@ namespace MusicStoreConsoleApplication
         Product readProduct(string path);
         Transaction readTransaction(string path);
         Client readClient(string path);
-        List<object> readList(string path);
-        ObservableCollection<object> readObservableCollection(string path);
-        Dictionary<int, object> readDictionary(string path);
+        List<Client> readList(string path);
+        ObservableCollection<Transaction> readObservableCollection(string path);
+        Dictionary<int, Product> readDictionary(string path);
 
     }
 }

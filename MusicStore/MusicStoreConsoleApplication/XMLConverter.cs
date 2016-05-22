@@ -88,7 +88,7 @@ namespace MusicStoreConsoleApplication
             }
         }
 
-        public List<object> readList(string path)
+        public List<Client> readList(string path)
         {
             //XmlSerializer ser = new XmlSerializer(typeof(object));
             //using (FileStream fs = File.OpenRead(path))
@@ -98,12 +98,12 @@ namespace MusicStoreConsoleApplication
             return null;
         }
 
-        public ObservableCollection<object> readObservableCollection(string path)
+        public ObservableCollection<Transaction> readObservableCollection(string path)
         {
             throw new NotImplementedException();
         }
 
-        public Dictionary<int, object> readDictionary(string path)
+        public Dictionary<int, Product> readDictionary(string path)
         {
             throw new NotImplementedException();
         }
