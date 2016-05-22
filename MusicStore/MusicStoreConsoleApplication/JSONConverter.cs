@@ -14,105 +14,66 @@ namespace MusicStoreConsoleApplication
     {
         public Client readClient(string path)
         {
-            JsonSerializer deserializer = new JsonSerializer();
-            using (StreamReader sw = new StreamReader(path))
-            using (JsonReader reader = new JsonTextReader(sw))
-            {
-                return deserializer.Deserialize<Client>(reader);
-            }
+            return readObject<Client>(path);
         }
 
-        public Dictionary<int, Product> readDictionary(string path)
+        public Dictionary<int, Product> readProductsDictionary(string path)
         {
-            JsonSerializer deserializer = new JsonSerializer();
-            using (StreamReader sw = new StreamReader(path))
-            using (JsonReader reader = new JsonTextReader(sw))
-            {
-                return deserializer.Deserialize<Dictionary<int, Product>>(reader);
-            }
+            return readObject<Dictionary<int, Product>>(path);
         }
 
-        public List<Client> readList(string path)
+        public List<Client> readClientsList(string path)
         {
-            JsonSerializer deserializer = new JsonSerializer();
-            using (StreamReader sw = new StreamReader(path))
-            using (JsonReader reader = new JsonTextReader(sw))
-            {
-                return deserializer.Deserialize<List<Client>>(reader);
-            }
+            return readObject<List<Client>>(path);
         }
 
-        public ObservableCollection<Transaction> readObservableCollection(string path)
+        public ObservableCollection<Transaction> readTransactionsObservableCollection(string path)
         {
-            JsonSerializer deserializer = new JsonSerializer();
-            using (StreamReader sw = new StreamReader(path))
-            using (JsonReader reader = new JsonTextReader(sw))
-            {
-                return deserializer.Deserialize<ObservableCollection<Transaction>>(reader);
-            }
-        }
+            return readObject<ObservableCollection<Transaction>>(path);
+        }    
 
         public Product readProduct(string path)
         {
-            JsonSerializer deserializer = new JsonSerializer();
-            using (StreamReader sw = new StreamReader(path))
-            using (JsonReader reader = new JsonTextReader(sw))
-            {
-                return deserializer.Deserialize<Product>(reader);
-            }
+            return readObject<Product>(path);
         }
 
         public Transaction readTransaction(string path)
         {
-            JsonSerializer deserializer = new JsonSerializer();
-            using (StreamReader sw = new StreamReader(path))
-            using (JsonReader reader = new JsonTextReader(sw))
-            {
-                return deserializer.Deserialize<Transaction>(reader);
-            }
+            return readObject<Transaction>(path);
         }
 
-        public void writeCollection(ObservableCollection<Transaction> collection, string path)
+        public void writeTransactionsObservableCollection(ObservableCollection<Transaction> collection, string path)
         {
-            JsonSerializer serializer = new JsonSerializer();
-
-            using (StreamWriter sw = new StreamWriter(path))
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                serializer.Serialize(writer, collection);
-            }
+            writeObject(collection, path);
         }
 
-        public void writeCollection(Dictionary<int, Product> collection, string path)
+        public void writeProductsDictionary(Dictionary<int, Product> collection, string path)
         {
-            JsonSerializer serializer = new JsonSerializer();
-
-            using (StreamWriter sw = new StreamWriter(path))
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                serializer.Serialize(writer, collection);
-            }
+            writeObject(collection, path);
         }
 
-        public void writeCollection(List<Client> collection, string path)
+        public void writeClientsList(List<Client> collection, string path)
         {
-            JsonSerializer serializer = new JsonSerializer();
-
-            using (StreamWriter sw = new StreamWriter(path))
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                serializer.Serialize(writer, collection);
-            }
+            writeObject(collection, path);
         }
 
         public void writeObject(object obj, string path)
         {
             JsonSerializer serializer = new JsonSerializer();
-
             using (StreamWriter sw = new StreamWriter(path))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 serializer.Serialize(writer, obj);
+            }
+        }
+
+        private T readObject<T>(string path)
+        {
+            JsonSerializer deserializer = new JsonSerializer();
+            using (StreamReader sw = new StreamReader(path))
+            using (JsonReader reader = new JsonTextReader(sw))
+            {
+                return deserializer.Deserialize<T>(reader);
             }
         }
     }

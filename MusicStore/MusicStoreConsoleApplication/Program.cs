@@ -60,9 +60,9 @@ namespace MusicStore.ConsoleApplication
             //Console.WriteLine(client.ToString());
 
             JSONConverter jsonConverter = new JSONConverter();
-            jsonConverter.writeCollection(_DataRepository.GetAllTransactions(), "transactions.txt");
+            jsonConverter.writeTransactionsObservableCollection(_DataRepository.GetAllTransactions(), "transactions.txt");
             //Console.WriteLine(jsonConverter.readObservableCollection("transactions.txt"));
-            foreach (var item in jsonConverter.readObservableCollection("transactions.txt"))
+            foreach (var item in jsonConverter.readTransactionsObservableCollection("transactions.txt"))
             {
                 Console.WriteLine(item.ToString());
             }     

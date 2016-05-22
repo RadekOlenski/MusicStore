@@ -12,16 +12,16 @@ namespace MusicStoreConsoleApplication
     {
         void writeObject(object obj, string path);
 
-        void writeCollection(List<Client> collection, string path);
-        void writeCollection(ObservableCollection<Transaction> collection, string path);
-        void writeCollection(Dictionary<int, Product> collection, string path);
+        void writeClientsList(List<Client> collection, string path);
+        void writeTransactionsObservableCollection(ObservableCollection<Transaction> collection, string path);
+        void writeProductsDictionary(Dictionary<int, Product> collection, string path);
 
         Product readProduct(string path);
         Transaction readTransaction(string path);
         Client readClient(string path);
-        List<Client> readList(string path);
-        ObservableCollection<Transaction> readObservableCollection(string path);
-        Dictionary<int, Product> readDictionary(string path);
+        List<Client> readClientsList(string path);
+        ObservableCollection<Transaction> readTransactionsObservableCollection(string path);
+        Dictionary<int, Product> readProductsDictionary(string path);
 
     }
 }

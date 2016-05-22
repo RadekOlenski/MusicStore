@@ -33,7 +33,7 @@ namespace MusicStoreConsoleApplication
             return null;
         }
 
-        public void writeCollection(Dictionary<int, Product> collection, string path)
+        public void writeProductsDictionary(Dictionary<int, Product> collection, string path)
         {
             //TODO: Serializacja Dictionary!
             //XmlSerializer ser = new XmlSerializer(typeof(item[]), new XmlRootAttribute() { ElementName = "items" });
@@ -43,7 +43,7 @@ namespace MusicStoreConsoleApplication
             //}
         }
 
-        public void writeCollection(ObservableCollection<Transaction> collection, string path)
+        public void writeTransactionsObservableCollection(ObservableCollection<Transaction> collection, string path)
         {
             XmlSerializer ser = new XmlSerializer(collection.GetType());
             using (FileStream fs = File.Create(path))
@@ -52,7 +52,7 @@ namespace MusicStoreConsoleApplication
             }
         }
 
-        public void writeCollection(List<Client> collection, string path)
+        public void writeClientsList(List<Client> collection, string path)
         {
             XmlSerializer ser = new XmlSerializer(collection.GetType());
             using (FileStream fs = File.Create(path))
@@ -88,7 +88,7 @@ namespace MusicStoreConsoleApplication
             }
         }
 
-        public List<Client> readList(string path)
+        public List<Client> readClientsList(string path)
         {
             //XmlSerializer ser = new XmlSerializer(typeof(object));
             //using (FileStream fs = File.OpenRead(path))
@@ -98,12 +98,12 @@ namespace MusicStoreConsoleApplication
             return null;
         }
 
-        public ObservableCollection<Transaction> readObservableCollection(string path)
+        public ObservableCollection<Transaction> readTransactionsObservableCollection(string path)
         {
             throw new NotImplementedException();
         }
 
-        public Dictionary<int, Product> readDictionary(string path)
+        public Dictionary<int, Product> readProductsDictionary(string path)
         {
             throw new NotImplementedException();
         }
