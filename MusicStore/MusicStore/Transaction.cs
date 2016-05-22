@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace MusicStore
 {
+    [Serializable]
     public class Transaction
     {
         #region Constructor

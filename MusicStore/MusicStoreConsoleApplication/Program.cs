@@ -65,7 +65,13 @@ namespace MusicStore.ConsoleApplication
             foreach (var item in jsonConverter.readTransactionsObservableCollection("transactions.txt"))
             {
                 Console.WriteLine(item.ToString());
-            }     
+            }
+
+            BinaryConverter bc = new BinaryConverter();
+            Client c = new Client("Tadek");
+            bc.writeObject(c, "Data.dat");
+            Console.WriteLine(bc.readClient("Data.dat").ToString());
+
             Console.ReadKey();
             
         }
