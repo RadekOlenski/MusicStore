@@ -10,12 +10,12 @@ namespace MusicStoreConsoleApplication
 {
     public class Serializer
     {
+        private readonly DataRepository dataRepo;
         public readonly bool mode;
         private string filePath;
-        public object SerializedObject { get; set; }
-
-        public Serializer()
+        public Serializer(DataRepository dataRepo)
         {
+            this.dataRepo = dataRepo;
             Console.WriteLine("Ścieżka do pliku: ");
             filePath = Console.ReadLine();
             mode = chooseSerializationMode();
@@ -23,31 +23,28 @@ namespace MusicStoreConsoleApplication
 
         public void startSerializer()
         {
-            if (SerializedObject != null)
-            {
                 string format = chooseSerializationFormat();
                 string data = chooseDataToSerialization();
                 beginSerialization(format + data); 
-            }
         }
 
-        public void startDeserializer()
+        public object startDeserializer()
         {
             string format = chooseSerializationFormat();
             string data = chooseDataToSerialization();
-            SerializedObject = beginDeserialization(format + data);
+            return beginDeserialization(format + data);
         }
 
         public bool chooseSerializationMode()
         {
-            Console.WriteLine("Co chcesz zrobić?\n1.Serializacja\n2.Deserializacja");
+            Console.WriteLine("Co chcesz zrobić?\n1.Serializacja\n2.Deserializacja\n");
             if (Console.ReadLine().Contains("1")) return true;
             else return false;
         }
 
         private string chooseSerializationFormat()
         {
-            Console.WriteLine("Jaki format chcesz wykorzystać?\n1.XML\n2.JSON\n3.Binary");
+            Console.WriteLine("Jaki format chcesz wykorzystać?\n1.XML\n2.JSON\n3.Binary\n");
             string answer = Console.ReadLine();
             if (answer.Contains("1")) return "xml";
             else if (answer.Contains("2")) return "json";
@@ -56,7 +53,7 @@ namespace MusicStoreConsoleApplication
 
         private string chooseDataToSerialization()
         {
-            Console.WriteLine("Jakie dane wykorzystać?\n1.Pojedynczego klienta\n2.Pojedynczy produkt\n3.Pojedynczą transakcję\n4.Listę klientów\n5.Obserwowaną kolekcję transakcji\n6.Słownik produktów");
+            Console.WriteLine("Jakie dane wykorzystać?\n1.Pojedynczego klienta\n2.Pojedynczy produkt\n3.Pojedynczą transakcję\n4.Listę klientów\n5.Obserwowaną kolekcję transakcji\n6.Słownik produktów\n");
             string answer = Console.ReadLine();
             if (answer.Contains("1")) return "c";
             else if (answer.Contains("2")) return "p";
@@ -64,6 +61,12 @@ namespace MusicStoreConsoleApplication
             else if (answer.Contains("4")) return "lc";
             else if (answer.Contains("5")) return "oct";
             else return "dp";
+        }
+
+        private int chooseIndex()
+        {
+            Console.WriteLine("Pod którym indexem? ");
+            return Int32.Parse(Console.ReadLine().Substring(0,1));
         }
 
         private void beginSerialization(string answer)
@@ -74,46 +77,58 @@ namespace MusicStoreConsoleApplication
             switch(answer)
             {
                 case "xmlc":
+                    xc.writeObject(dataRepo.GetSpecificClient(chooseIndex()),filePath);
+                    break;
                 case "xmlp":
+                    xc.writeObject(dataRepo.GetSpecificProduct(chooseIndex()), filePath);
+                    break;
                 case "xmlt":
-                    xc.writeObject(SerializedObject, filePath);
+                    xc.writeObject(dataRepo.GetSpecificTransaction(chooseIndex()), filePath);
                     break;
                 case "xmllc":
-                    xc.writeClientsList((List<Client>)SerializedObject, filePath);
+                    xc.writeClientsList(dataRepo.GetAllClients(), filePath);
                     break;
                 case "xmloct":
-                    xc.writeTransactionsObservableCollection((ObservableCollection<Transaction>)SerializedObject, filePath);
+                    xc.writeTransactionsObservableCollection(dataRepo.GetAllTransactions(), filePath);
                     break;
                 case "xmldp":
-                    xc.writeProductsDictionary((Dictionary<int, Product>)SerializedObject, filePath);
+                    xc.writeProductsDictionary(dataRepo.GetAllProducts(), filePath);
                     break;
                 case "jsonc":
+                    jc.writeObject(dataRepo.GetSpecificClient(chooseIndex()), filePath);
+                    break;
                 case "jsonp":
+                    xc.writeObject(dataRepo.GetSpecificProduct(chooseIndex()), filePath);
+                    break;
                 case "jsont":
-                    jc.writeObject(SerializedObject, filePath);
+                    xc.writeObject(dataRepo.GetSpecificTransaction(chooseIndex()), filePath);
                     break;
                 case "jsonlc":
-                    jc.writeClientsList((List<Client>)SerializedObject, filePath);
+                    jc.writeClientsList(dataRepo.GetAllClients(), filePath);
                     break;
                 case "jsonoct":
-                    jc.writeTransactionsObservableCollection((ObservableCollection<Transaction>)SerializedObject, filePath);
+                    jc.writeTransactionsObservableCollection(dataRepo.GetAllTransactions(), filePath);
                     break;
                 case "jsondp":
-                    jc.writeProductsDictionary((Dictionary<int, Product>)SerializedObject, filePath);
+                    jc.writeProductsDictionary(dataRepo.GetAllProducts(), filePath);
                     break;
                 case "binc":
+                    bc.writeObject(dataRepo.GetSpecificClient(chooseIndex()), filePath);
+                    break;
                 case "binp":
+                    jc.writeObject(dataRepo.GetSpecificProduct(chooseIndex()), filePath);
+                    break;
                 case "bint":
-                    bc.writeObject(SerializedObject, filePath);
+                    jc.writeObject(dataRepo.GetSpecificTransaction(chooseIndex()), filePath);
                     break;
                 case "binlc":
-                    bc.writeClientsList((List<Client>)SerializedObject, filePath);
+                    bc.writeClientsList(dataRepo.GetAllClients(), filePath);
                     break;
                 case "binoct":
-                    bc.writeTransactionsObservableCollection((ObservableCollection<Transaction>)SerializedObject, filePath);
+                    bc.writeTransactionsObservableCollection(dataRepo.GetAllTransactions(), filePath);
                     break;
                 case "bindp":
-                    bc.writeProductsDictionary((Dictionary<int, Product>)SerializedObject, filePath);
+                    bc.writeProductsDictionary(dataRepo.GetAllProducts(), filePath);
                     break;
                 default:
                     break;

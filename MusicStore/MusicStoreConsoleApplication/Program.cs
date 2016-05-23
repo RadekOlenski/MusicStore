@@ -75,7 +75,7 @@ namespace MusicStore.ConsoleApplication
 
 
             Console.WriteLine("SERIALIZACJA:");
-            Serializer serializer = new Serializer();
+            Serializer serializer = new Serializer(_DataRepository);
             if (serializer.mode) serializer.startSerializer();
             else serializer.startDeserializer();
 
