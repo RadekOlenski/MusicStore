@@ -12,53 +12,49 @@ namespace MusicStoreConsoleApplication
 {
     public class XMLConverter : IConverter
     {
-        //Do dictionary ??
-        //public class item
-        //{
-        //    [XmlAttribute]
-        //    public int id;
-        //    [XmlAttribute]
-        //    public Product product;
-        //}
+        public Client readClient(string path)
+        {
+            return readObject<Client>(path);
+        }
+
+        public List<Client> readClientsList(string path)
+        {
+            return readObject<List<Client>>(path);
+        }
 
         public Product readProduct(string path)
         {
-            //TODO: jak rozwiązać różne typy produktów ???
-            //XmlSerializer ser = new XmlSerializer(typeof(Keyboard));
-            //using (FileStream fs = File.OpenRead(path))
-            //{
-            //    object obj = ser.Deserialize(fs);
-            //    return (Keyboard)obj;
-            //}
-            return null;
+            return readObject<Product>(path);
         }
 
-        public void writeProductsDictionary(Dictionary<int, Product> collection, string path)
+        public Dictionary<int, Product> readProductsDictionary(string path)
         {
-            //TODO: Serializacja Dictionary!
-            //XmlSerializer ser = new XmlSerializer(typeof(item[]), new XmlRootAttribute() { ElementName = "items" });
-            //using (FileStream fs = File.Create(path))
-            //{
-            //    ser.Serialize(fs, collection.Select(n => new item() { id = n.Key, product = n.Value }).ToArray());
-            //}
+            return readObject<Dictionary<int, Product>>(path);
         }
 
-        public void writeTransactionsObservableCollection(ObservableCollection<Transaction> collection, string path)
+        public Transaction readTransaction(string path)
         {
-            XmlSerializer ser = new XmlSerializer(collection.GetType());
-            using (FileStream fs = File.Create(path))
-            {
-                ser.Serialize(fs, collection);
-            }
+            return readObject<Transaction>(path);
+        }
+
+        public ObservableCollection<Transaction> readTransactionsObservableCollection(string path)
+        {
+            return readObject<ObservableCollection<Transaction>>(path);
         }
 
         public void writeClientsList(List<Client> collection, string path)
         {
-            XmlSerializer ser = new XmlSerializer(collection.GetType());
-            using (FileStream fs = File.Create(path))
-            {
-                ser.Serialize(fs, collection);
-            }
+            writeObject(collection, path);
+        }
+
+        public void writeProductsDictionary(Dictionary<int, Product> collection, string path)
+        {
+            writeObject(collection, path);
+        }
+
+        public void writeTransactionsObservableCollection(ObservableCollection<Transaction> collection, string path)
+        {
+            writeObject(collection, path);
         }
 
         public void writeObject(object obj, string path)
@@ -68,44 +64,15 @@ namespace MusicStoreConsoleApplication
             {
                 ser.Serialize(fs, obj);
             }
-        }
+        } 
 
-        public Transaction readTransaction(string path)
+        private T readObject<T>(string path)
         {
-            XmlSerializer ser = new XmlSerializer(typeof(Transaction));
+            XmlSerializer ser = new XmlSerializer(typeof(T));
             using (FileStream fs = File.OpenRead(path))
             {
-                return (Transaction)ser.Deserialize(fs);
+                return (T)ser.Deserialize(fs);
             }
         }
-
-        public Client readClient(string path)
-        {
-            XmlSerializer ser = new XmlSerializer(typeof(Client));
-            using (FileStream fs = File.OpenRead(path))
-            {
-                return (Client)ser.Deserialize(fs);
-            }
-        }
-
-        public List<Client> readClientsList(string path)
-        {
-            //XmlSerializer ser = new XmlSerializer(typeof(object));
-            //using (FileStream fs = File.OpenRead(path))
-            //{
-            //    return ser.Deserialize(fs);
-            //}
-            return null;
-        }
-
-        public ObservableCollection<Transaction> readTransactionsObservableCollection(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Dictionary<int, Product> readProductsDictionary(string path)
-        {
-            throw new NotImplementedException();
-        }
     }
-    }
+   }

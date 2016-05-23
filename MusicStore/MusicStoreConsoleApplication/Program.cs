@@ -48,10 +48,11 @@ namespace MusicStore.ConsoleApplication
             //_DataRepository.DeleteTransaction(1);
             //Console.ReadLine();
 
-            //XMLConverter xmlConverter = new XMLConverter();
+            XMLConverter xmlConverter = new XMLConverter();
             //xmlConverter.writeObject(_DataRepository.GetSpecificProduct(0), "productXML.xml");
             //xmlConverter.writeObject(_DataRepository.GetSpecificClient(1), "clientXML.xml");
-            //xmlConverter.writeCollection(_DataRepository.GetAllClients(), "clients.xml");
+            xmlConverter.writeProductsDictionary(_DataRepository.GetAllProducts(), "products.xml");
+            Dictionary<int, Product> products = xmlConverter.readProductsDictionary("products.xml");
             //xmlConverter.writeCollection(_DataRepository.GetAllProducts(), "products.xml");
             //xmlConverter.writeCollection(_DataRepository.GetAllTransactions(), "transactions.xml");
 
