@@ -73,6 +73,12 @@ namespace MusicStore.ConsoleApplication
             bc.writeObject(c, "Data.dat");
             Console.WriteLine(bc.readClient("Data.dat").ToString());
 
+
+            Console.WriteLine("SERIALIZACJA:");
+            Serializer serializer = new Serializer();
+            if (serializer.mode) serializer.startSerializer();
+            else serializer.startDeserializer();
+
             Console.ReadKey();
             
         }
