@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace MusicStore
 {
     [Serializable]
-    public class Product
+    public class Product : ITXTSerializable
     {
         #region Constructor
         public Product(string Name, double Price)
@@ -62,6 +62,16 @@ namespace MusicStore
         {
             string result = "Product Type: " + this.GetType() + ", Name: " + this.Name + ", Price: " + this.Price;
             return result;
+        }
+
+        public string ToSerialize()
+        {
+            return String.Format("{0};{1};", Name, Price);
+        }
+
+        public int CountArguments()
+        {
+            return (from c in ToSerialize() where c == ';' select c).Count();
         }
 
         #endregion

@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace MusicStore
 {
     [Serializable]
-    public class Client
+    public class Client : ITXTSerializable
     {
-        #region Constructor
-        public Client(string Name = "None", string Surname = "None" , string Street = "None", string City = "None" , int BirthYear = 1900)
+        #region Constructor 
+        public Client(string Name = "None", string Surname = "None", string Street = "None", string City = "None", int BirthYear = 1900)
         {
             GenerateClientID();
             this.Name = Name;
@@ -27,7 +27,7 @@ namespace MusicStore
 
         }
         #endregion
-       
+
         #region Variables
 
         private static int _generalClientID = 0;
@@ -53,6 +53,18 @@ namespace MusicStore
         public override string ToString()
         {
             return "Client Name: " + this.Name + " " + this.Surname + ", Street: " + this.Street + ", City: " + this.City + ", Year of birth: " + this.BirthYear;
+        }
+        #endregion
+
+        #region Txt Serialization Methods
+        public string ToSerialize()
+        {
+            return String.Format("{0};{1};{2};{3};{4};", Name, Surname, Street, City, BirthYear);
+        }
+
+        public int CountArguments()
+        {
+            return (from c in ToSerialize() where c == ';' select c).Count();
         }
         #endregion
     }

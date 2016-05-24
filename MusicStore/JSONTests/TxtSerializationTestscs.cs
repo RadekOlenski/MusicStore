@@ -5,43 +5,50 @@ using MusicStoreConsoleApplication;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace XMLTests
+namespace TXTTests
 {
     [TestClass]
-    public class XMLSerializationTests
+    public class TxtSerializationTestscs
     {
         [TestMethod]
-        public void ClientSerializationXMLTest()
+        public void CountArgumentsTest()
+        {
+            Product prod = new Product("Ibanez", 200.0);
+            Assert.AreEqual(5, prod.CountArguments());
+        }
+
+        [TestMethod]
+        public void ClientSerializationTXTTest()
         {
             Client client = new Client("Tadeusz", "Nowak", "Random Street 23", "Lodz", 2005);
-            XMLConverter xmlc = new XMLConverter();
-            xmlc.writeObject(client, "client.txt");
-            Client secondClient = xmlc.readClient("client.txt");
+            TxtPROConverter txtcon = new TxtPROConverter();
+            txtcon.writeObject(client, "client.txt");
+            Client secondClient = txtcon.readClient("client.txt");
             Assert.AreEqual(client.ToString(), secondClient.ToString());
         }
 
         [TestMethod]
-        public void ProductSerializationXMLTest()
+        public void ProductSerializationTXTTest()
         {
             Product product = new Product("Ibanez 200", 349.55);
-            XMLConverter xmlc = new XMLConverter();
-            xmlc.writeObject(product, "product.txt");
-            Product secondClient = xmlc.readProduct("product.txt");
+            TxtPROConverter txtcon = new TxtPROConverter();
+            txtcon.writeObject(product, "product.txt");
+            Product secondClient = txtcon.readProduct("product.txt");
             Assert.AreEqual(product.ToString(), secondClient.ToString());
         }
 
         [TestMethod]
-        public void TransactionSerializationXMLTest()
+        public void TransactionSerializationTXTTest()
         {
             Transaction transaction = new Transaction(3, 3, "5 maja");
-            XMLConverter xmlc = new XMLConverter();
-            xmlc.writeObject(transaction, "transaction.txt");
-            Transaction secondClient = xmlc.readTransaction("transaction.txt");
+            TxtPROConverter txtcon = new TxtPROConverter();
+            txtcon.writeObject(transaction, "transaction.txt");
+            Transaction secondClient = txtcon.readTransaction("transaction.txt");
             Assert.AreEqual(transaction.ToString(), secondClient.ToString());
         }
 
         [TestMethod]
-        public void ClientListSerializationXMLTest()
+        public void ClientListSerializationTXTTest()
         {
             List<Client> clients = new List<Client>
             {
@@ -51,9 +58,9 @@ namespace XMLTests
                 new Client("Stefan", "Jura", "Honey Street 31", "Radom", 2100)
             };
 
-            XMLConverter xmlc = new XMLConverter();
-            xmlc.writeClientsList(clients, "clients.txt");
-            List<Client> deClients = xmlc.readClientsList("clients.txt");
+            TxtPROConverter txtcon = new TxtPROConverter();
+            txtcon.writeClientsList(clients, "clients.txt");
+            List<Client> deClients = txtcon.readClientsList("clients.txt");
             for (int i = 0; i < clients.Count; i++)
             {
                 Assert.AreEqual(clients[i].ToString(), deClients[i].ToString());
@@ -61,7 +68,7 @@ namespace XMLTests
         }
 
         [TestMethod]
-        public void ClientListSerializationCountXMLTest()
+        public void ClientListSerializationCountTXTTest()
         {
             List<Client> clients = new List<Client>
             {
@@ -71,15 +78,15 @@ namespace XMLTests
                 new Client("Stefan", "Jura", "Honey Street 31", "Radom", 2100)
             };
 
-            XMLConverter xmlc = new XMLConverter();
-            xmlc.writeClientsList(clients, "clients.txt");
-            List<Client> deClients = xmlc.readClientsList("clients.txt");
+            TxtPROConverter txtcon = new TxtPROConverter();
+            txtcon.writeClientsList(clients, "clients.txt");
+            List<Client> deClients = txtcon.readClientsList("clients.txt");
 
             Assert.AreEqual(clients.Count, deClients.Count);
         }
 
         [TestMethod]
-        public void TransactionObservableCollectionSerializationXMLTest()
+        public void TransactionObservableCollectionSerializationTXTTest()
         {
             ObservableCollection<Transaction> transactions = new ObservableCollection<Transaction>
             {
@@ -89,9 +96,9 @@ namespace XMLTests
                 new Transaction(7,4, "45 wrzesnia"),
             };
 
-            XMLConverter xmlc = new XMLConverter();
-            xmlc.writeTransactionsObservableCollection(transactions, "transactions.txt");
-            ObservableCollection<Transaction> deTransactions = xmlc.readTransactionsObservableCollection("transactions.txt");
+            TxtPROConverter txtcon = new TxtPROConverter();
+            txtcon.writeTransactionsObservableCollection(transactions, "transactions.txt");
+            ObservableCollection<Transaction> deTransactions = txtcon.readTransactionsObservableCollection("transactions.txt");
             for (int i = 0; i < transactions.Count; i++)
             {
                 Assert.AreEqual(transactions[i].ToString(), deTransactions[i].ToString());
@@ -99,7 +106,7 @@ namespace XMLTests
         }
 
         [TestMethod]
-        public void TransactionObservableCollectionSerializationCountXMLTest()
+        public void TransactionObservableCollectionSerializationCountTXTTest()
         {
             ObservableCollection<Transaction> transactions = new ObservableCollection<Transaction>
             {
@@ -109,14 +116,14 @@ namespace XMLTests
                 new Transaction(7,4, "45 wrzesnia"),
             };
 
-            XMLConverter xmlc = new XMLConverter();
-            xmlc.writeTransactionsObservableCollection(transactions, "transactions.txt");
-            ObservableCollection<Transaction> deTransactions = xmlc.readTransactionsObservableCollection("transactions.txt");
+            TxtPROConverter txtcon = new TxtPROConverter();
+            txtcon.writeTransactionsObservableCollection(transactions, "transactions.txt");
+            ObservableCollection<Transaction> deTransactions = txtcon.readTransactionsObservableCollection("transactions.txt");
             Assert.AreEqual(transactions.Count, deTransactions.Count);
         }
 
         [TestMethod]
-        public void ProductDictionarySerializationCountXMLTest()
+        public void ProductDictionarySerializationCountTXTTest()
         {
             Dictionary<int, Product> products = new Dictionary<int, Product>
             {
@@ -126,14 +133,14 @@ namespace XMLTests
                 { 4, new Product { Name = "Yamaha -4", Price = 4500.99}},
             };
 
-            XMLConverter xmlc = new XMLConverter();
-            xmlc.writeProductsDictionary(products, "products.txt");
-            Dictionary<int, Product> deProducts = xmlc.readProductsDictionary("products.txt");
+            TxtPROConverter txtcon = new TxtPROConverter();
+            txtcon.writeProductsDictionary(products, "products.txt");
+            Dictionary<int, Product> deProducts = txtcon.readProductsDictionary("products.txt");
             Assert.AreEqual(products.Count, deProducts.Count);
         }
 
         [TestMethod]
-        public void ProductDictionarySerializationXMLTest()
+        public void ProductDictionarySerializationTXTTest()
         {
             Dictionary<int, Product> products = new Dictionary<int, Product>
             {
@@ -144,9 +151,9 @@ namespace XMLTests
                 { 4, new Product { Name = "Yamaha -4", Price = 4500.99}},
             };
 
-            XMLConverter xmlc = new XMLConverter();
-            xmlc.writeProductsDictionary(products, "products.txt");
-            Dictionary<int, Product> deProducts = xmlc.readProductsDictionary("products.txt");
+            TxtPROConverter txtcon = new TxtPROConverter();
+            txtcon.writeProductsDictionary(products, "products.txt");
+            Dictionary<int, Product> deProducts = txtcon.readProductsDictionary("products.txt");
             for (int i = 0; i < products.Count; i++)
             {
                 Assert.AreEqual(products[i].ToString(), deProducts[i].ToString());

@@ -11,21 +11,37 @@ namespace MusicStoreConsoleApplication
     public class Serializer
     {
         private readonly DataRepository dataRepo;
-        public readonly bool mode;
-        private string filePath;
+        private readonly bool mode;
+        private readonly string filePath;
+
+        public object DeserializedObject { get; set; }
+
         public Serializer(DataRepository dataRepo)
         {
             this.dataRepo = dataRepo;
             Console.WriteLine("Ścieżka do pliku: ");
             filePath = Console.ReadLine();
+            Console.WriteLine();
             mode = chooseSerializationMode();
+        }
+
+        public void start()
+        {
+            if (mode)
+            {
+                startSerializer();
+            }
+            else
+            {
+                DeserializedObject = startDeserializer();
+            }
         }
 
         public void startSerializer()
         {
-                string format = chooseSerializationFormat();
-                string data = chooseDataToSerialization();
-                beginSerialization(format + data); 
+            string format = chooseSerializationFormat();
+            string data = chooseDataToSerialization();
+            beginSerialization(format + data);
         }
 
         public object startDeserializer()
@@ -46,6 +62,7 @@ namespace MusicStoreConsoleApplication
         {
             Console.WriteLine("Jaki format chcesz wykorzystać?\n1.XML\n2.JSON\n3.Binary\n");
             string answer = Console.ReadLine();
+            Console.WriteLine();
             if (answer.Contains("1")) return "xml";
             else if (answer.Contains("2")) return "json";
             else return "bin";
@@ -55,6 +72,7 @@ namespace MusicStoreConsoleApplication
         {
             Console.WriteLine("Jakie dane wykorzystać?\n1.Pojedynczego klienta\n2.Pojedynczy produkt\n3.Pojedynczą transakcję\n4.Listę klientów\n5.Obserwowaną kolekcję transakcji\n6.Słownik produktów\n");
             string answer = Console.ReadLine();
+            Console.WriteLine();
             if (answer.Contains("1")) return "c";
             else if (answer.Contains("2")) return "p";
             else if (answer.Contains("3")) return "t";
@@ -66,7 +84,7 @@ namespace MusicStoreConsoleApplication
         private int chooseIndex()
         {
             Console.WriteLine("Pod którym indexem? ");
-            return Int32.Parse(Console.ReadLine().Substring(0,1));
+            return Int32.Parse(Console.ReadLine().Substring(0, 1));
         }
 
         private void beginSerialization(string answer)
@@ -74,10 +92,10 @@ namespace MusicStoreConsoleApplication
             XMLConverter xc = new XMLConverter();
             JSONConverter jc = new JSONConverter();
             BinaryConverter bc = new BinaryConverter();
-            switch(answer)
+            switch (answer)
             {
                 case "xmlc":
-                    xc.writeObject(dataRepo.GetSpecificClient(chooseIndex()),filePath);
+                    xc.writeObject(dataRepo.GetSpecificClient(chooseIndex()), filePath);
                     break;
                 case "xmlp":
                     xc.writeObject(dataRepo.GetSpecificProduct(chooseIndex()), filePath);

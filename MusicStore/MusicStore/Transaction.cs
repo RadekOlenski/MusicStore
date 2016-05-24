@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace MusicStore
 {
     [Serializable]
-    public class Transaction
+    public class Transaction : ITXTSerializable
     {
         #region Constructor
         public Transaction(int ClientID, int ProductID, string Date)
@@ -45,8 +45,18 @@ namespace MusicStore
         public override string ToString()
         {
             return "Transaction Date: " + this.Date;
-        } 
+        }
         #endregion
-       
+
+        public string ToSerialize()
+        {
+            return String.Format("{0};{1};{2};", ClientID, ProductID,Date);
+        }
+
+        public int CountArguments()
+        {
+            return (from c in ToSerialize() where c == ';' select c).Count();
+        }
+
     }
 }
