@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MusicStore;
-using Newtonsoft.Json;
 using System.IO;
+using System.Runtime.Serialization.Json;
 
 namespace MusicStoreConsoleApplication
 {
@@ -59,21 +59,19 @@ namespace MusicStoreConsoleApplication
 
         public void writeObject(object obj, string path)
         {
-            JsonSerializer serializer = new JsonSerializer();
-            using (StreamWriter sw = new StreamWriter(path))
-            using (JsonWriter writer = new JsonTextWriter(sw))
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
+            using (FileStream fs = File.OpenWrite(path))
             {
-                serializer.Serialize(writer, obj);
+                serializer.WriteObject(fs, obj);
             }
         }
 
         private T readObject<T>(string path)
         {
-            JsonSerializer deserializer = new JsonSerializer();
-            using (StreamReader sw = new StreamReader(path))
-            using (JsonReader reader = new JsonTextReader(sw))
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
+            using (FileStream fs = File.OpenRead(path))
             {
-                return deserializer.Deserialize<T>(reader);
+                return (T)serializer.ReadObject(fs);
             }
         }
     }

@@ -14,7 +14,7 @@ namespace TXTTests
         public void CountArgumentsTest()
         {
             Product prod = new Product("Ibanez", 200.0);
-            Assert.AreEqual(5, prod.CountArguments());
+            Assert.AreEqual(2, prod.CountArguments());
         }
 
         [TestMethod]

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
 using MusicStore;
+using System.Runtime.Serialization;
+using System.Xml;
 
 namespace MusicStoreConsoleApplication
 {
@@ -29,7 +31,13 @@ namespace MusicStoreConsoleApplication
 
         public Dictionary<int, Product> readProductsDictionary(string path)
         {
-            return readObject<Dictionary<int, Product>>(path);
+            string s = File.ReadAllText(path);
+            using (StreamReader sr = new StreamReader(path))
+            {
+                List<Type> knownTypes = new List<Type> { typeof(Keyboard), typeof(Guitar), typeof(LiveAlbum), typeof(LongPlay) };
+                DataContractSerializer ser = new DataContractSerializer(typeof(Dictionary<int, Product>), knownTypes);
+                return ser.ReadObject(sr.BaseStream) as Dictionary<int, Product>;
+            }
         }
 
         public Transaction readTransaction(string path)
@@ -49,7 +57,15 @@ namespace MusicStoreConsoleApplication
 
         public void writeProductsDictionary(Dictionary<int, Product> collection, string path)
         {
-            writeObject(collection, path);
+            using (StringWriter sw = new StringWriter())
+            using (XmlTextWriter writer = new XmlTextWriter(sw))
+            {
+                writer.Formatting = Formatting.Indented;
+                List<Type> knownTypes = new List<Type> { typeof(Keyboard), typeof(Guitar), typeof(LiveAlbum), typeof(LongPlay) };
+                DataContractSerializer ser = new DataContractSerializer(typeof(Dictionary<int, Product>), knownTypes);
+                ser.WriteObject(writer, collection);
+                File.WriteAllText(path, sw.ToString());
+            }
         }
 
         public void writeTransactionsObservableCollection(ObservableCollection<Transaction> collection, string path)
@@ -59,20 +75,20 @@ namespace MusicStoreConsoleApplication
 
         public void writeObject(object obj, string path)
         {
-            XmlSerializer ser = new XmlSerializer(obj.GetType());
             using (FileStream fs = File.Create(path))
             {
+                XmlSerializer ser = new XmlSerializer(obj.GetType());
                 ser.Serialize(fs, obj);
             }
-        } 
+        }
 
         private T readObject<T>(string path)
         {
-            XmlSerializer ser = new XmlSerializer(typeof(T));
             using (FileStream fs = File.OpenRead(path))
             {
+                XmlSerializer ser = new XmlSerializer(typeof(T));
                 return (T)ser.Deserialize(fs);
             }
         }
     }
-   }
+}
