@@ -13,79 +13,26 @@ namespace MusicStore.ConsoleApplication
         {
             DataRepository _DataRepository = new DataRepository();
             _DataRepository.CreateProduct(ProductType.Keyboard, "Keyboard", 100);
-            try
-            {
-                _DataRepository.ReadAllProducts();
-            }
-            catch (InvalidOperationException e)
-            {
-                Console.WriteLine(e.Message);
-            }
             _DataRepository.FillRepository = new FillRepository();
             _DataRepository.FillClients();
             _DataRepository.FillProducts();
             _DataRepository.FillTransactions();
-            Console.WriteLine(_DataRepository.ReadAllClients());
-            Console.WriteLine(_DataRepository.ReadAllProducts());
-            Console.WriteLine(_DataRepository.ReadAllTransactions());
-
             DataService _DataService = new DataService(_DataRepository);
-
-            try
-            {
-                _DataRepository.GetSpecificProductToString(10);
-            }
-            catch (InvalidOperationException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            //Console.ReadLine();
             _DataRepository.CreateTransaction(2, 2, "17 wrzesnia");
-            //Console.ReadLine();
             _DataRepository.CreateTransaction(5, 4, "13 wrzesnia");
-            //Console.ReadLine();
-            //_DataRepository.DeleteTransaction(1);
-            //Console.ReadLine();
 
-            //XMLConverter xmlConverter = new XMLConverter();
-            //xmlConverter.writeObject(_DataRepository.GetSpecificProduct(0), "productXML.xml");
-            //xmlConverter.writeObject(_DataRepository.GetSpecificClient(1), "clientXML.xml");
-            //xmlConverter.writeProductsDictionary(_DataRepository.GetAllProducts(), "products.xml");
-            //Dictionary<int, Product> products = xmlConverter.readProductsDictionary("products.xml");
-            //foreach (var item in products)
-            //{
-            //    Console.WriteLine(item.ToString());
-            //}
-            //xmlConverter.writeCollection(_DataRepository.GetAllProducts(), "products.xml");
-            //xmlConverter.writeCollection(_DataRepository.GetAllTransactions(), "transactions.xml");
 
-            ////Product product = xmlConverter.readProduct("productXML.xml");
-            //Client client = xmlConverter.readClient("clientXML.xml");
-            //Console.WriteLine(client.ToString());
 
-            //JSONConverter jsonConverter = new JSONConverter();
-            //jsonConverter.writeTransactionsObservableCollection(_DataRepository.GetAllTransactions(), "transactions.txt");
-            ////Console.WriteLine(jsonConverter.readObservableCollection("transactions.txt"));
-            //foreach (var item in jsonConverter.readTransactionsObservableCollection("transactions.txt"))
-            //{
-            //    Console.WriteLine(item.ToString());
-            //}
-
-            //BinaryConverter bc = new BinaryConverter();
-            //Client c = new Client("Tadek");
-            //bc.writeObject(c, "Data.dat");
-            //Console.WriteLine(bc.readClient("Data.dat").ToString());
             TxtPROConverter pro = new TxtPROConverter();
             //pro.writeClientsList(_DataRepository.GetAllClients(), "tclients.txt");
             pro.writeObject(new Client("Tadeusz",BirthYear:2010), "myclient.txt");
             pro.writeObject(new Product("Tadeusz 2000",34.99), "myproduct.txt");
-            Console.WriteLine(pro.readClient("myclient.txt").ToString());
-            Console.WriteLine(pro.readProduct("myproduct.txt").ToString());
+            //Console.WriteLine(pro.readClient("myclient.txt").ToString());
+            //Console.WriteLine(pro.readProduct("myproduct.txt").ToString());
 
-            //Console.WriteLine("SERIALIZACJA:");
-            //Serializer serializer = new Serializer(_DataRepository);
-            //serializer.start();
+            Console.WriteLine("SERIALIZACJA:");
+            Serializer serializer = new Serializer(_DataRepository);
+            serializer.start();
 
             Console.ReadKey();
             

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicStore
 {
+    [Serializable]
     public class LongPlay : MusicAlbum
     {
         public LongPlay(string Name, double Price, uint Year, string Band) : base(Name, Price, Year,Band)

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicStore
 {
+    [Serializable]
     public class MusicAlbum : Product
     {
         public uint Year { get; set; }

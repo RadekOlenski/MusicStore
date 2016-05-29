@@ -59,7 +59,8 @@ namespace MusicStoreConsoleApplication
 
         public void writeObject(object obj, string path)
         {
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
+            List<Type> knownTypes = new List<Type> { typeof(Keyboard), typeof(Guitar), typeof(LiveAlbum), typeof(LongPlay) };
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType(), knownTypes);
             using (FileStream fs = File.OpenWrite(path))
             {
                 serializer.WriteObject(fs, obj);
@@ -68,7 +69,8 @@ namespace MusicStoreConsoleApplication
 
         private T readObject<T>(string path)
         {
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
+            List<Type> knownTypes = new List<Type> { typeof(Keyboard), typeof(Guitar), typeof(LiveAlbum), typeof(LongPlay) };
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T), knownTypes);
             using (FileStream fs = File.OpenRead(path))
             {
                 return (T)serializer.ReadObject(fs);

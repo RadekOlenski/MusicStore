@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicStore
 {
+    [Serializable]
     public class Guitar : Instrument
     {
         public Guitar(string Name, double Price) : base(Name, Price)
